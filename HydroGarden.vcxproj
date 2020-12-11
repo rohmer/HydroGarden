@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{6CB82F45-DB8B-402B-883B-789D1325E458}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>External/lvgl-dev;.;External/lv_drivers-master;External/libhttpserver/src;=/usr/local/include;External/JSON;External/restinio-master/dev;External/pistache-master/include;External/wpa_supplicant-2.9/src/utils;External/wpa_supplicant-2.9/src;wpa;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_LVGL_H_INCLUDE_SIMPLE;CONFIG_CTRL_IFACE;CONFIG_CTRL_IFACE_UNIX;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>stdc++fs;pthread; mnl;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Hardware.cpp" />
+    <ClCompile Include="HydroGarden.cpp" />
+    <ClCompile Include="Info.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="NetworkTools.cpp" />
+    <ClCompile Include="NetworkUI.cpp" />
+    <ClCompile Include="Scheduler.cpp" />
+    <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="StateChange.cpp" />
+    <ClCompile Include="UI.cpp" />
+    <ClCompile Include="WebServer.cpp" />
+    <ClCompile Include="wifi_scan.c" />
+    <ClInclude Include="External\JSON\json.hpp" />
+    <ClInclude Include="Hardware.h" />
+    <ClInclude Include="Info.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="lv_conf.h" />
+    <ClInclude Include="NetworkTools.h" />
+    <ClInclude Include="NetworkUI.h" />
+    <ClInclude Include="Scheduler.h" />
+    <ClInclude Include="Settings.h" />
+    <ClInclude Include="StateChange.h" />
+    <ClInclude Include="Task.h" />
+    <ClInclude Include="UI.h" />
+    <ClInclude Include="Version.h" />
+    <ClInclude Include="WebServer.h" />
+    <ClInclude Include="wifi_scan.h" />
+    <None Include="Build\HydroGarden.service" />
+    <None Include="Build\Install.sh" />
+    <None Include="External\lvgl-dev\CMakeLists.txt" />
+    <None Include="External\lvgl-dev\LICENCE.txt" />
+    <ClCompile Include="External\lvgl-dev\examples\porting\lv_port_disp_template.c" />
+    <ClCompile Include="External\lvgl-dev\examples\porting\lv_port_fs_template.c" />
+    <ClCompile Include="External\lvgl-dev\examples\porting\lv_port_indev_template.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_core\lv_disp.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_core\lv_group.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_core\lv_indev.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_core\lv_obj.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_core\lv_refr.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_core\lv_style.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_draw_arc.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_draw_blend.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_draw_img.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_draw_label.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_draw_line.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_draw_mask.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_draw_rect.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_draw_triangle.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_img_buf.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_img_cache.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_draw\lv_img_decoder.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_dejavu_16_persian_hebrew.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_fmt_txt.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_loader.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_10.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_12.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_12_subpx.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_14.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_16.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_18.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_20.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_22.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_24.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_26.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_28.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_28_compressed.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_30.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_32.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_34.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_36.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_38.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_40.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_42.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_44.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_46.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_48.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_montserrat_8.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_simsun_16_cjk.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_font\lv_font_unscii_8.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_gpu\lv_gpu_nxp_pxp.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_gpu\lv_gpu_nxp_pxp_osa.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_gpu\lv_gpu_nxp_vglite.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_gpu\lv_gpu_stm32_dma2d.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_hal\lv_hal_disp.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_hal\lv_hal_indev.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_hal\lv_hal_tick.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_anim.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_area.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_async.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_bidi.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_color.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_debug.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_fs.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_gc.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_ll.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_log.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_math.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_mem.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_printf.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_task.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_templ.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_txt.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_txt_ap.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_misc\lv_utils.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_themes\lv_theme.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_themes\lv_theme_empty.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_themes\lv_theme_material.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_themes\lv_theme_mono.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_themes\lv_theme_template.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_arc.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_bar.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_btn.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_btnmatrix.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_calendar.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_canvas.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_chart.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_checkbox.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_cont.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_cpicker.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_dropdown.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_gauge.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_img.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_imgbtn.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_keyboard.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_label.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_led.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_line.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_linemeter.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_list.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_msgbox.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_objmask.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_objx_templ.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_page.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_roller.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_slider.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_spinbox.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_spinner.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_switch.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_table.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_tabview.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_textarea.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_tileview.c" />
+    <ClCompile Include="External\lvgl-dev\src\lv_widgets\lv_win.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_assert.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_main.c" />
+    <None Include="External\lvgl-dev\tests\Makefile" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_core\lv_test_core.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_core\lv_test_font_loader.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_core\lv_test_obj.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_core\lv_test_style.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_fonts\font_1.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_fonts\font_2.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_fonts\font_3.c" />
+    <ClCompile Include="External\lvgl-dev\tests\lv_test_widgets\lv_test_label.c" />
+    <ClInclude Include="External\lvgl-dev\lvgl.h" />
+    <ClInclude Include="External\lvgl-dev\lv_conf_template.h" />
+    <ClInclude Include="External\lvgl-dev\examples\porting\lv_port_disp_template.h" />
+    <ClInclude Include="External\lvgl-dev\examples\porting\lv_port_fs_template.h" />
+    <ClInclude Include="External\lvgl-dev\examples\porting\lv_port_indev_template.h" />
+    <ClInclude Include="External\lvgl-dev\src\lvgl.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_api_map.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_conf_internal.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_conf_kconfig.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_core\lv_disp.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_core\lv_group.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_core\lv_indev.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_core\lv_obj.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_core\lv_obj_style_dec.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_core\lv_refr.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_core\lv_style.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw_arc.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw_blend.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw_img.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw_label.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw_line.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw_mask.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw_rect.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_draw_triangle.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_img_buf.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_img_cache.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_draw\lv_img_decoder.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_font\lv_font.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_font\lv_font_fmt_txt.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_font\lv_font_loader.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_font\lv_symbol_def.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_gpu\lv_gpu_nxp_pxp.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_gpu\lv_gpu_nxp_pxp_osa.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_gpu\lv_gpu_nxp_vglite.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_gpu\lv_gpu_stm32_dma2d.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_hal\lv_hal.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_hal\lv_hal_disp.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_hal\lv_hal_indev.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_hal\lv_hal_tick.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_anim.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_area.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_async.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_bidi.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_color.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_debug.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_fs.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_gc.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_ll.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_log.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_math.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_mem.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_printf.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_task.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_templ.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_txt.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_txt_ap.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_types.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_misc\lv_utils.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_themes\lv_theme.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_themes\lv_theme_empty.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_themes\lv_theme_material.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_themes\lv_theme_mono.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_themes\lv_theme_template.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_arc.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_bar.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_btn.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_btnmatrix.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_calendar.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_canvas.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_chart.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_checkbox.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_cont.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_cpicker.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_dropdown.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_gauge.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_img.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_imgbtn.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_keyboard.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_label.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_led.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_line.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_linemeter.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_list.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_msgbox.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_objmask.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_objx_templ.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_page.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_roller.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_slider.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_spinbox.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_spinner.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_switch.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_table.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_tabview.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_textarea.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_tileview.h" />
+    <ClInclude Include="External\lvgl-dev\src\lv_widgets\lv_win.h" />
+    <ClInclude Include="External\lvgl-dev\tests\lv_test_assert.h" />
+    <ClInclude Include="External\lvgl-dev\tests\lv_test_conf.h" />
+    <ClInclude Include="External\lvgl-dev\tests\lv_test_core\lv_test_core.h" />
+    <ClInclude Include="External\lvgl-dev\tests\lv_test_core\lv_test_font_loader.h" />
+    <ClInclude Include="External\lvgl-dev\tests\lv_test_core\lv_test_obj.h" />
+    <ClInclude Include="External\lvgl-dev\tests\lv_test_core\lv_test_style.h" />
+    <ClInclude Include="External\lvgl-dev\tests\lv_test_widgets\lv_test_label.h" />
+    <ClCompile Include="External\lv_drivers-master\win_drv.c" />
+    <ClCompile Include="External\lv_drivers-master\display\drm.c" />
+    <ClCompile Include="External\lv_drivers-master\display\fbdev.c" />
+    <ClCompile Include="External\lv_drivers-master\display\GC9A01.c" />
+    <ClCompile Include="External\lv_drivers-master\display\ILI9341.c" />
+    <ClCompile Include="External\lv_drivers-master\display\monitor.c" />
+    <ClCompile Include="External\lv_drivers-master\display\R61581.c" />
+    <ClCompile Include="External\lv_drivers-master\display\SHARP_MIP.c" />
+    <ClCompile Include="External\lv_drivers-master\display\SSD1963.c" />
+    <ClCompile Include="External\lv_drivers-master\display\ST7565.c" />
+    <ClCompile Include="External\lv_drivers-master\display\UC1610.c" />
+    <ClCompile Include="External\lv_drivers-master\gtkdrv\gtkdrv.c" />
+    <ClCompile Include="External\lv_drivers-master\indev\AD_touch.c" />
+    <ClCompile Include="External\lv_drivers-master\indev\evdev.c" />
+    <ClCompile Include="External\lv_drivers-master\indev\FT5406EE8.c" />
+    <ClCompile Include="External\lv_drivers-master\indev\keyboard.c" />
+    <ClCompile Include="External\lv_drivers-master\indev\libinput.c" />
+    <ClCompile Include="External\lv_drivers-master\indev\mouse.c" />
+    <ClCompile Include="External\lv_drivers-master\indev\mousewheel.c" />
+    <ClCompile Include="External\lv_drivers-master\indev\XPT2046.c" />
+    <ClInclude Include="External\lv_drivers-master\lv_drv_conf.h" />
+    <ClInclude Include="External\lv_drivers-master\win_drv.h" />
+    <ClInclude Include="External\lv_drivers-master\display\drm.h" />
+    <ClInclude Include="External\lv_drivers-master\display\fbdev.h" />
+    <ClInclude Include="External\lv_drivers-master\display\GC9A01.h" />
+    <ClInclude Include="External\lv_drivers-master\display\ILI9341.h" />
+    <ClInclude Include="External\lv_drivers-master\display\monitor.h" />
+    <ClInclude Include="External\lv_drivers-master\display\R61581.h" />
+    <ClInclude Include="External\lv_drivers-master\display\SHARP_MIP.h" />
+    <ClInclude Include="External\lv_drivers-master\display\SSD1963.h" />
+    <ClInclude Include="External\lv_drivers-master\display\ST7565.h" />
+    <ClInclude Include="External\lv_drivers-master\display\UC1610.h" />
+    <ClInclude Include="External\lv_drivers-master\gtkdrv\gtkdrv.h" />
+    <ClInclude Include="External\lv_drivers-master\indev\AD_touch.h" />
+    <ClInclude Include="External\lv_drivers-master\indev\evdev.h" />
+    <ClInclude Include="External\lv_drivers-master\indev\FT5406EE8.h" />
+    <ClInclude Include="External\lv_drivers-master\indev\keyboard.h" />
+    <ClInclude Include="External\lv_drivers-master\indev\libinput_drv.h" />
+    <ClInclude Include="External\lv_drivers-master\indev\mouse.h" />
+    <ClInclude Include="External\lv_drivers-master\indev\mousewheel.h" />
+    <ClInclude Include="External\lv_drivers-master\indev\XPT2046.h" />
+    <None Include="Update.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HydroGarden-Debug.vgdbsettings" />
+    <None Include="HydroGarden-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="bcm2835\bcm2835.vcxproj">
+      <Project>{8c361292-1874-4820-9056-4753694c92eb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="External\pistache-master\pistache\pistache.vcxproj">
+      <Project>{66c55411-6a3b-464c-8303-2767b2e36e61}</Project>
+    </ProjectReference>
+    <ProjectReference Include="External\wireless_tools.29\iwlib\iwlib.vcxproj">
+      <Project>{e9062150-3b4a-4c57-9c7e-184a28a0db5b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

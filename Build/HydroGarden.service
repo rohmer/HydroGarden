@@ -1,0 +1,15 @@
+[Unit]
+Description=Hydrogarden
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/HydroGarden
+WorkingDirectory=/usr/local/bin
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+

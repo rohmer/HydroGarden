@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{66C55411-6A3B-464C-8303-2767B2E36E61}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="pistache-Debug.vgdbsettings" />
+    <None Include="pistache-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\client\client.cc" />
+    <ClCompile Include="..\src\common\base64.cc" />
+    <ClCompile Include="..\src\common\cookie.cc" />
+    <ClCompile Include="..\src\common\description.cc" />
+    <ClCompile Include="..\src\common\http.cc" />
+    <ClCompile Include="..\src\common\http_defs.cc" />
+    <ClCompile Include="..\src\common\http_header.cc" />
+    <ClCompile Include="..\src\common\http_headers.cc" />
+    <ClCompile Include="..\src\common\mime.cc" />
+    <ClCompile Include="..\src\common\net.cc" />
+    <ClCompile Include="..\src\common\os.cc" />
+    <ClCompile Include="..\src\common\peer.cc" />
+    <ClCompile Include="..\src\common\reactor.cc" />
+    <ClCompile Include="..\src\common\stream.cc" />
+    <ClCompile Include="..\src\common\string_logger.cc" />
+    <ClCompile Include="..\src\common\tcp.cc" />
+    <ClCompile Include="..\src\common\timer_pool.cc" />
+    <ClCompile Include="..\src\common\transport.cc" />
+    <ClCompile Include="..\src\common\utils.cc" />
+    <ClCompile Include="..\src\server\endpoint.cc" />
+    <ClCompile Include="..\src\server\listener.cc" />
+    <ClCompile Include="..\src\server\router.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\pistache\async.h" />
+    <ClInclude Include="..\include\pistache\base64.h" />
+    <ClInclude Include="..\include\pistache\client.h" />
+    <ClInclude Include="..\include\pistache\common.h" />
+    <ClInclude Include="..\include\pistache\config.h" />
+    <ClInclude Include="..\include\pistache\cookie.h" />
+    <ClInclude Include="..\include\pistache\description.h" />
+    <ClInclude Include="..\include\pistache\endpoint.h" />
+    <ClInclude Include="..\include\pistache\errors.h" />
+    <ClInclude Include="..\include\pistache\flags.h" />
+    <ClInclude Include="..\include\pistache\http.h" />
+    <ClInclude Include="..\include\pistache\http_defs.h" />
+    <ClInclude Include="..\include\pistache\http_header.h" />
+    <ClInclude Include="..\include\pistache\http_headers.h" />
+    <ClInclude Include="..\include\pistache\iterator_adapter.h" />
+    <ClInclude Include="..\include\pistache\listener.h" />
+    <ClInclude Include="..\include\pistache\log.h" />
+    <ClInclude Include="..\include\pistache\mailbox.h" />
+    <ClInclude Include="..\include\pistache\mime.h" />
+    <ClInclude Include="..\include\pistache\net.h" />
+    <ClInclude Include="..\include\pistache\optional.h" />
+    <ClInclude Include="..\include\pistache\os.h" />
+    <ClInclude Include="..\include\pistache\peer.h" />
+    <ClInclude Include="..\include\pistache\prototype.h" />
+    <ClInclude Include="..\include\pistache\reactor.h" />
+    <ClInclude Include="..\include\pistache\router.h" />
+    <ClInclude Include="..\include\pistache\route_bind.h" />
+    <ClInclude Include="..\include\pistache\ssl_wrappers.h" />
+    <ClInclude Include="..\include\pistache\stream.h" />
+    <ClInclude Include="..\include\pistache\string_logger.h" />
+    <ClInclude Include="..\include\pistache\string_view.h" />
+    <ClInclude Include="..\include\pistache\tcp.h" />
+    <ClInclude Include="..\include\pistache\timer_pool.h" />
+    <ClInclude Include="..\include\pistache\transport.h" />
+    <ClInclude Include="..\include\pistache\typeid.h" />
+    <ClInclude Include="..\include\pistache\type_checkers.h" />
+    <ClInclude Include="..\include\pistache\utils.h" />
+    <ClInclude Include="..\include\pistache\version.h" />
+    <ClInclude Include="..\include\pistache\view.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{5e72dcb9-e036-4ff5-8dff-89ee4f9f58aa}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{aaceb7a4-fc20-4615-ab49-1158e8bf194c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{0557df2a-2fec-4815-bcb7-eda32405b917}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{94960723-0bdb-472e-af57-78ea1e963b77}</UniqueIdentifier>
+      <Extensions>vgdbsettings</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="pistache-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="pistache-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\client\client.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\base64.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\cookie.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\description.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\http.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\http_defs.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\http_header.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\http_headers.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\mime.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\net.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\os.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\peer.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\reactor.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\stream.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\string_logger.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\tcp.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\timer_pool.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\transport.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\common\utils.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\server\endpoint.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\server\listener.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\server\router.cc">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\pistache\async.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\base64.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\client.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\common.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\config.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\cookie.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\description.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\endpoint.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\errors.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\flags.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\http.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\http_defs.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\http_header.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\http_headers.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\iterator_adapter.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\listener.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\log.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\mailbox.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\mime.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\net.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\optional.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\os.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\peer.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\prototype.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\reactor.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\route_bind.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\router.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\ssl_wrappers.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\stream.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\string_logger.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\string_view.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\tcp.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\timer_pool.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\transport.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\type_checkers.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\typeid.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\utils.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\view.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pistache\version.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

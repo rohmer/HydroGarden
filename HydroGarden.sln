@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HydroGarden", "HydroGarden.vcxproj", "{6CB82F45-DB8B-402B-883B-789D1325E458}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bcm2835", "bcm2835\bcm2835.vcxproj", "{8C361292-1874-4820-9056-4753694C92EB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pistache", "External\pistache-master\pistache\pistache.vcxproj", "{66C55411-6A3B-464C-8303-2767B2E36E61}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iwlib", "External\wireless_tools.29\iwlib\iwlib.vcxproj", "{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|VisualGDB = Debug|VisualGDB
+		MinSizeRel|VisualGDB = MinSizeRel|VisualGDB
+		Release|VisualGDB = Release|VisualGDB
+		RelWithDebInfo|VisualGDB = RelWithDebInfo|VisualGDB
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{E9062150-3B4A-4C57-9C7E-184A28A0DB5B}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54459A25-80DB-4E6C-BA50-BE2AC6F773E0}
+	EndGlobalSection
+EndGlobal
