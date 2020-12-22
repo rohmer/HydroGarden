@@ -1,5 +1,4 @@
 #include "Package.h"
-//TODO: Convert to libarchive
 
 sPackageStatus Package::CreatePackage(std::string packageDescription)
 {
@@ -102,6 +101,12 @@ sPackageStatus  Package::InstallPackage(std::filesystem::path installPackage)
 		ret.msgs.push_back(sPackageMsg(false, ss.str()));
 		return ret;
 	}
+	else
+	{
+		std::stringstream ss;	
+		ss << "Install package: " << installPackage << " found";
+		ret.msgs.push_back(sPackageMsg(true, ss.str()));
+	}
 	std::filesystem::path tmpDir = std::filesystem::temp_directory_path();
 	
 	tmpDir /= genUUID();
@@ -114,16 +119,36 @@ sPackageStatus  Package::InstallPackage(std::filesystem::path installPackage)
 		ret.msgs.push_back(sPackageMsg(false, ss.str()));
 		return ret;
 	}
+	else
+	{
+		std::stringstream ss;	
+		ss << "Temp dir created: " << tmpDir;
+		ret.msgs.push_back(sPackageMsg(true, ss.str()));
+
+	}
 	
 	ret =uncompressFile(installPackage, tmpDir, ret);
-		
-	// Load the packag descriptor
+	if (!ret.success)
+	{
+		return ret;
+	}
+	else
+	{
+		std::stringstream ss;	
+		ss << "Install package: " << installPackage << " uncompressed to: "<<tmpDir;
+		ret.msgs.push_back(sPackageMsg(true, ss.str()));
+	}
+	// Load the package descriptor
+	
 	std::filesystem::path pdp = tmpDir;
 	pdp /= "package.json";
 	InstallationDesc installFile;
 	try
 	{
 		installFile = readDesc(pdp);
+		std::stringstream ss;	
+		ss << "Package descriptor: " << pdp << " read";
+		ret.msgs.push_back(sPackageMsg(true, ss.str()));
 	}
 	catch (const std::exception&e)
 	{
@@ -152,6 +177,12 @@ sPackageStatus  Package::InstallPackage(std::filesystem::path installPackage)
 			ret.msgs.push_back(sPackageMsg(false, ss.str()));
 			std::filesystem::remove_all(tmpDir);
 			return ret;
+		}
+		else
+		{
+			std::stringstream ss;
+			ss << "Signatures match on file: " << srcFile;
+			ret.msgs.push_back(sPackageMsg(true, ss.str()));
 		}
 	}
 	
@@ -183,6 +214,9 @@ sPackageStatus  Package::InstallPackage(std::filesystem::path installPackage)
 				std::filesystem::remove_all(tmpDir);
 				return ret;
 			}
+			std::stringstream ss;
+			ss << "Copied: " << srcFile << " to: " << destDir;
+			ret.msgs.push_back(sPackageMsg(true, ss.str()));
 		}
 		catch (std::exception &e)
 		{
@@ -225,11 +259,14 @@ sPackageStatus  Package::InstallPackage(std::filesystem::path installPackage)
 		if (std::filesystem::exists(linkSrc))
 			std::filesystem::remove(linkSrc);
 		std::filesystem::create_symlink(destDir, linkSrc);		
-		
+		std::stringstream ss;
+		ss << "Created symlink: " << linkSrc << " to: " << destDir;
+		ret.msgs.push_back(sPackageMsg(true, ss.str()));
 		
 	}
 	
 	std::filesystem::remove_all(tmpDir);
+	ret.msgs.push_back(sPackageMsg (true, "Removed temporary files"));
 	return ret;
 }
 

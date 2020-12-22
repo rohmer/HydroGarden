@@ -6,6 +6,8 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <unistd.h>
+
 #include <External/JSON/json.hpp>
 
 #include "Logger.h"
@@ -29,6 +31,7 @@ private:
 	float dailyMLFood;										// 15ml per tablespoon
 	
 	std::map<std::string, sNetwork> networks;
+	std::string hostname;
 	
 public:
 	static Settings *GetInstance();
@@ -54,4 +57,7 @@ public:
 	void AddNetwork(std::string ssid, std::string password, bool isDefault);
 	sNetwork GetNetwork(std::string ssid);
 	std::vector<sNetwork> GetNetworks();
+	
+	std::string GetHostname();
+	void SetHostname(std::string hostname);
 };

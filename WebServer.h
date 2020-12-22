@@ -21,6 +21,7 @@ using namespace Pistache;
 #include "SettingsEP.h"
 #include "StateChange.h"
 #include "Info.h"
+#include "Package.h"
 
 class WebServer {
 public:

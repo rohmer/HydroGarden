@@ -657,5 +657,8 @@
     <ClInclude Include="NetworkUI.h">
       <Filter>Header files\Network</Filter>
     </ClInclude>
+    <ClInclude Include="VersionNo.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

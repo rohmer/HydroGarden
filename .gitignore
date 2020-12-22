@@ -345,6 +345,16 @@ VisualGDB
 *.suo
 *.old
 .vs
-CodeDB
-.visualgdb/
+**/CodeDB/
+**/.visualgdb/
 
+*.lck
+*.000
+*.001
+*.npa00
+*.lck
+Build/HydroGarden.pkg.tar.gz
+Build/HydroGarden.tar.gz
+bcm2835/.visualgdb/CodeDB/bcm2835-Debug-VisualGDB/codedb.lck
+*.gz
+*.npa00

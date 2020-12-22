@@ -164,19 +164,21 @@ void WebServer::updateStatic(const Rest::Request &req, Http::ResponseWriter resp
 
 void WebServer::update(const Rest::Request &req, Http::ResponseWriter response)
 {
+	bool received = false;
 	try
 	{
 		int len = req.body().length();
 		std::string reqBody = req.body();
-		std::string tag = "gzip";
+		std::string tag = "\r\n\r\n";
 		int start = reqBody.find(tag);
 		int end= reqBody.rfind("WebKitFormBoundary");
-		std::string file = reqBody.substr(start+tag.length()+4, end-start-16);
+		std::string file = reqBody.substr(start+tag.length(), end-start);
 		std::ofstream out;
-		out.open("/tmp/HydroGarden.tar.gz");
+		out.open("/tmp/HydroGarden.pkg",ios_base::openmode::_S_bin);
 		out << file;
 		out.close();
-		LOGI("Received Update Successfully");
+		LOGI("Received Update Successfully");		
+		received = true;
 	}
 	catch (const std::exception &e)
 	{
@@ -185,8 +187,28 @@ void WebServer::update(const Rest::Request &req, Http::ResponseWriter response)
 		LOGE(ss.str());
 		return;
 	}
-	std::stringstream html;
-	html << "<HTML><HEAD><TITLE>HydroGarden Upgrade</TITLE></HEAD>";
-	html << "<body><h2>Update queued</h2></body></html>";
-	response.send(Http::Code::Ok, html.str());
+	if (received)
+	{
+		sPackageStatus status = Package::InstallPackage("/tmp/HydroGarden.pkg");
+		std::stringstream html;
+	
+		html << "<HTML><HEAD><TITLE>HydroGarden Upgrade</TITLE></HEAD>";
+		html << "<body><h2>Update ";
+		if (status.success)
+			html << "Successful</h2>";
+		else
+			html << "Failed</h2><br><hr>";
+		html << "<h3>Logs:</h3><br>";
+		for (int i = 0; i < status.msgs.size(); i++)
+		{
+			sPackageMsg msg = status.msgs[i];
+			std::string color = "#00BB00";
+			if (!msg.success)
+				color = "#BB0000";
+			html << "<span style=\"foreground-color: " << color << "\">" << msg.msg << "</span><br>";
+		}
+		html << "</body></html>";
+		response.send(Http::Code::Ok, html.str());
+			
+	}
 }

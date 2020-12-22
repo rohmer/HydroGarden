@@ -1,0 +1,1 @@
+verbuild ..\VersionNo.h *.*.*.+

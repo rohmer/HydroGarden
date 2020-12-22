@@ -1,6 +1,4 @@
 #pragma once
-
-#define VERSION_MAJOR 0
-#define VERSION_MINOR 9
-#define VERSION_RELEASE 0
-#define VERSION_BUILD 100
+#include "VersionNo.h"
+#define VERSION_RELEASE VERSION_BUILDNO
+#define VERSION_BUILD VERSION_EXTEND

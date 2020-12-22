@@ -19,9 +19,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="InstallLib.cpp">
-      <Filter>Source files</Filter>
-    </ClCompile>
     <ClCompile Include="InstallationDesc.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
@@ -30,9 +27,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="InstallLib.h">
-      <Filter>Header files</Filter>
-    </ClInclude>
     <ClInclude Include="InstallationDesc.h">
       <Filter>Header files</Filter>
     </ClInclude>

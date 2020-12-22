@@ -59,14 +59,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="InstallationDesc.cpp" />
-    <ClCompile Include="InstallLib.cpp" />
     <ClCompile Include="Package.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Package.h" />
     <ClInclude Include="sFile.h" />
     <ClInclude Include="InstallationDesc.h" />
-    <ClInclude Include="InstallLib.h" />
     <ClInclude Include="Version.h" />
   </ItemGroup>
   <ItemGroup>

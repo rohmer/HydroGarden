@@ -55,6 +55,7 @@
     <ProjectFile>HydroGarden.vcxproj</ProjectFile>
     <RemoteBuildEnvironment>
       <Records />
+      <EnvironmentSetupFiles />
     </RemoteBuildEnvironment>
     <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
@@ -62,7 +63,18 @@
   </Build>
   <CustomBuild>
     <PreSyncActions />
-    <PreBuildActions />
+    <PreBuildActions>
+      <CustomActionBase xsi:type="CommandLineAction">
+        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+        <RemoteHost>
+          <HostName>BuildMachine</HostName>
+          <Transport>BuiltinShortcut</Transport>
+        </RemoteHost>
+        <Command>$(BuildDir)\Build\incVer.bat</Command>
+        <WorkingDirectory>$(BuildDir)\Build</WorkingDirectory>
+        <BackgroundMode>false</BackgroundMode>
+      </CustomActionBase>
+    </PreBuildActions>
     <PostBuildActions />
     <PreCleanActions />
     <PostCleanActions />
@@ -143,6 +155,6 @@
     <DeployWhenLaunchedWithoutDebugging>true</DeployWhenLaunchedWithoutDebugging>
     <StripDebugSymbolsDuringDeployment>false</StripDebugSymbolsDuringDeployment>
     <SuppressTTYCreation>false</SuppressTTYCreation>
-    <IndexDebugSymbols>false</IndexDebugSymbols>
+    <IndexDebugSymbols>true</IndexDebugSymbols>
   </Debug>
 </VisualGDBProjectSettings2>

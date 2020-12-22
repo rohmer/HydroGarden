@@ -36,15 +36,15 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>External/lvgl-dev;.;External/lv_drivers-master;External/libhttpserver/src;=/usr/local/include;External/JSON;External/restinio-master/dev;External/pistache-master/include;External/wpa_supplicant-2.9/src/utils;External/wpa_supplicant-2.9/src;wpa;External/libwpa/wpa_cli_oper;External/libwpa/wpa_supplicant-2.6/wpa_supplicant;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>External/lvgl-dev;.;External/lv_drivers-master;External/libhttpserver/src;=/usr/local/include;External/JSON;External/restinio-master/dev;External/pistache-master/include;External/wpa_supplicant-2.9/src/utils;External/wpa_supplicant-2.9/src;wpa;External/libwpa/wpa_cli_oper;External/libarchive/libarchive;External/PicoSHA2-master;InstallLib;External/libwpa/wpa_supplicant-2.6/wpa_supplicant;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_LVGL_H_INCLUDE_SIMPLE;CONFIG_CTRL_IFACE;CONFIG_CTRL_IFACE_UNIX;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>stdc++fs;pthread; mnl;expat;lzma;z;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
@@ -74,6 +74,7 @@
     <ClInclude Include="Task.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="Version.h" />
+    <ClInclude Include="VersionNo.h" />
     <ClInclude Include="WebServer.h" />
     <None Include=".gitignore" />
     <None Include="Build\HydroGarden.service" />

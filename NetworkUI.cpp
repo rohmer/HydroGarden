@@ -174,9 +174,11 @@ void NetworkUI::setHostname_cb(lv_obj_t *sw, lv_event_t e)
 	}
 	
 	const char *hn = lv_textarea_get_text(hostnameTA);
-	
-	sethostname(hn, strlen(hn));
-	NetworkTools::Reassociate();
+	if (strcmp(hn, Settings::GetInstance()->GetHostname().c_str()) != 0)
+	{
+		sethostname(hn, strlen(hn));
+		NetworkTools::Reassociate();
+	}
 	
 	lv_obj_del(hostnameWin);
 }	
@@ -225,7 +227,17 @@ void NetworkUI::lv_network_cb(lv_obj_t* sw, lv_event_t e)
 	passwordTA = lv_textarea_create(pwWindow, nullptr);
 	lv_textarea_set_one_line(passwordTA, true);
 	lv_obj_set_pos(passwordTA, 200, 13);
-	lv_textarea_set_text(passwordTA, "");
+	
+	std::vector<sNetwork> networks = Settings::GetInstance()->GetNetworks();
+	std::string pw="";
+	for (int i = 0; i < networks.size(); i++)
+	{
+		if (strcmp(networks[i].ssid.c_str(), ssid.c_str()) == 0)
+		{
+			pw = networks[i].password;
+		}
+	}
+	lv_textarea_set_text(passwordTA, pw.c_str());
 	
 	keyboard = lv_keyboard_create(pwWindow, nullptr);
 	lv_keyboard_set_textarea(keyboard, passwordTA);

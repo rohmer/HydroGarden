@@ -12,6 +12,9 @@ Settings::Settings()
 		lightDuration = 14 * 60;
 		pumpRunTime = 120;
 		dailyMLFood = 4.5;
+		char cHost[1024];
+		gethostname(cHost, 1024);	
+		hostname = cHost;
 		SaveSettings();
 	} 
 	LoadSettings();
@@ -233,4 +236,16 @@ std::vector<sNetwork> Settings::GetNetworks()
 	for (std::map<std::string, sNetwork>::iterator it = networks.begin(); it != networks.end(); it++)
 		ret.push_back(it->second);
 	return ret;
+}
+
+void Settings::SetHostname(std::string hostname)
+{
+	sethostname(hostname.c_str(), sizeof(hostname.c_str()));
+	this->hostname = hostname;
+	SaveSettings();
+}
+
+std::string Settings::GetHostname()
+{
+	return hostname;
 }

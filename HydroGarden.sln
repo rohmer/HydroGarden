@@ -50,6 +50,7 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6CB82F45-DB8B-402B-883B-789D1325E458}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{6CB82F45-DB8B-402B-883B-789D1325E458}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{6CB82F45-DB8B-402B-883B-789D1325E458}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{6CB82F45-DB8B-402B-883B-789D1325E458}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{6CB82F45-DB8B-402B-883B-789D1325E458}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -64,6 +65,7 @@ Global
 		{6CB82F45-DB8B-402B-883B-789D1325E458}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{6CB82F45-DB8B-402B-883B-789D1325E458}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{8C361292-1874-4820-9056-4753694C92EB}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{8C361292-1874-4820-9056-4753694C92EB}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{8C361292-1874-4820-9056-4753694C92EB}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{8C361292-1874-4820-9056-4753694C92EB}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{8C361292-1874-4820-9056-4753694C92EB}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -78,6 +80,7 @@ Global
 		{8C361292-1874-4820-9056-4753694C92EB}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{8C361292-1874-4820-9056-4753694C92EB}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{66C55411-6A3B-464C-8303-2767B2E36E61}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{66C55411-6A3B-464C-8303-2767B2E36E61}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{66C55411-6A3B-464C-8303-2767B2E36E61}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{66C55411-6A3B-464C-8303-2767B2E36E61}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{66C55411-6A3B-464C-8303-2767B2E36E61}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -92,6 +95,7 @@ Global
 		{66C55411-6A3B-464C-8303-2767B2E36E61}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{66C55411-6A3B-464C-8303-2767B2E36E61}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -106,6 +110,7 @@ Global
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -120,6 +125,7 @@ Global
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{F20DCED5-681E-46B6-A869-C85D23EC982F}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{F20DCED5-681E-46B6-A869-C85D23EC982F}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{F20DCED5-681E-46B6-A869-C85D23EC982F}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{F20DCED5-681E-46B6-A869-C85D23EC982F}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{F20DCED5-681E-46B6-A869-C85D23EC982F}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -134,6 +140,7 @@ Global
 		{F20DCED5-681E-46B6-A869-C85D23EC982F}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{F20DCED5-681E-46B6-A869-C85D23EC982F}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{BD313634-AF8A-43A7-81C5-7AD0C3785229}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{BD313634-AF8A-43A7-81C5-7AD0C3785229}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{BD313634-AF8A-43A7-81C5-7AD0C3785229}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{BD313634-AF8A-43A7-81C5-7AD0C3785229}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{BD313634-AF8A-43A7-81C5-7AD0C3785229}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -148,6 +155,7 @@ Global
 		{BD313634-AF8A-43A7-81C5-7AD0C3785229}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{BD313634-AF8A-43A7-81C5-7AD0C3785229}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{8040B59D-9BA0-4D2A-99FF-1FFB9ED68AAD}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{8040B59D-9BA0-4D2A-99FF-1FFB9ED68AAD}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{8040B59D-9BA0-4D2A-99FF-1FFB9ED68AAD}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{8040B59D-9BA0-4D2A-99FF-1FFB9ED68AAD}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{8040B59D-9BA0-4D2A-99FF-1FFB9ED68AAD}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -162,6 +170,7 @@ Global
 		{8040B59D-9BA0-4D2A-99FF-1FFB9ED68AAD}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{8040B59D-9BA0-4D2A-99FF-1FFB9ED68AAD}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{6660C456-FB0D-4F2A-AC6A-4B99C6A92AED}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{6660C456-FB0D-4F2A-AC6A-4B99C6A92AED}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{6660C456-FB0D-4F2A-AC6A-4B99C6A92AED}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{6660C456-FB0D-4F2A-AC6A-4B99C6A92AED}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{6660C456-FB0D-4F2A-AC6A-4B99C6A92AED}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -176,6 +185,7 @@ Global
 		{6660C456-FB0D-4F2A-AC6A-4B99C6A92AED}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{6660C456-FB0D-4F2A-AC6A-4B99C6A92AED}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{CBB0E6C2-10D9-4400-B0AA-21171B756B64}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{CBB0E6C2-10D9-4400-B0AA-21171B756B64}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{CBB0E6C2-10D9-4400-B0AA-21171B756B64}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{CBB0E6C2-10D9-4400-B0AA-21171B756B64}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{CBB0E6C2-10D9-4400-B0AA-21171B756B64}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -190,6 +200,7 @@ Global
 		{CBB0E6C2-10D9-4400-B0AA-21171B756B64}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{CBB0E6C2-10D9-4400-B0AA-21171B756B64}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{1DF41516-8CF7-4E3E-BBA3-138F027A82B3}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{1DF41516-8CF7-4E3E-BBA3-138F027A82B3}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{1DF41516-8CF7-4E3E-BBA3-138F027A82B3}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{1DF41516-8CF7-4E3E-BBA3-138F027A82B3}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{1DF41516-8CF7-4E3E-BBA3-138F027A82B3}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -204,6 +215,7 @@ Global
 		{1DF41516-8CF7-4E3E-BBA3-138F027A82B3}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{1DF41516-8CF7-4E3E-BBA3-138F027A82B3}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
@@ -218,6 +230,7 @@ Global
 		{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 		{12FC350C-20F7-420C-8B75-EF8920AB4B3F}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{12FC350C-20F7-420C-8B75-EF8920AB4B3F}.Debug|Any CPU.Build.0 = Debug|VisualGDB
 		{12FC350C-20F7-420C-8B75-EF8920AB4B3F}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
 		{12FC350C-20F7-420C-8B75-EF8920AB4B3F}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
 		{12FC350C-20F7-420C-8B75-EF8920AB4B3F}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB

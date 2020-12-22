@@ -8,7 +8,7 @@
 #include <ostream>
 #include <iostream>
 #include <json.hpp>
-#include <uuid.h>
+#include "../External/libuuid/uuid.h"
 #include <archive.h>
 #include <fcntl.h>
 #include <stdio.h>
