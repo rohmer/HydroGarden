@@ -339,4 +339,12 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-**/.visualgdb/
+VisualGDB
+*.opensdf
+*.sdf
+*.suo
+*.old
+.vs
+CodeDB
+
+

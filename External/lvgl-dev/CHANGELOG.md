@@ -5,8 +5,14 @@
 ### New features
 - feat(chart) add lv_chart_remove_series and lv_chart_hide_series
 - feat(img_cahce) allow disabling image cacheing
-
+- calendar: make get_day_of_week() public
+ 
 ### Bugfixes
+- fix(draw_rect) free buffer used for arabic processing
+- fix(win) arabic process the title of the window
+- fix(dropdown) arabic process the option in lv_dropdown_add_option
+- fix(textarea) buffer overflow in password mode with UTF-8 characters
+- fix(textarea) cursor position after hiding character in password mode
 
 ## v7.8.1 (Plannad at 15.12.2020)
 
