@@ -346,5 +346,5 @@ VisualGDB
 *.old
 .vs
 CodeDB
-
+.visualgdb/
 
