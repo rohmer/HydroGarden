@@ -27,7 +27,7 @@
 
 /*BUTTON*/
 #define COLOR_BTN           (IS_LIGHT ? lv_color_hex(0xffffff) : lv_color_hex(0x586273))
-#define COLOR_BTN_PR        (IS_LIGHT ? lv_color_mix(theme.color_primary, COLOR_BTN, LV_OPA_10) : lv_color_mix(theme.color_primary, COLOR_BTN, LV_OPA_30))
+#define COLOR_BTN_PR        (IS_LIGHT ? lv_color_mix(theme.color_primary, COLOR_BTN, LV_OPA_20) : lv_color_mix(theme.color_primary, COLOR_BTN, LV_OPA_30))
 
 #define COLOR_BTN_CHK       (theme.color_primary)
 #define COLOR_BTN_CHK_PR    (lv_color_darken(theme.color_primary, LV_OPA_30))
@@ -316,10 +316,10 @@ static void basic_init(void)
     style_init_reset(&styles->pad_inner);
 
     lv_style_set_pad_inner(&styles->pad_inner, LV_STATE_DEFAULT,
-                           lv_disp_get_size_category(NULL) <= LV_DISP_MEDIUM_LIMIT ? LV_DPX(20) : LV_DPX(40));
+                           lv_disp_get_size_category(NULL) <= LV_DISP_SIZE_MEDIUM ? LV_DPX(20) : LV_DPX(40));
 
     style_init_reset(&styles->pad_small);
-    lv_style_int_t pad_small_value = lv_disp_get_size_category(NULL) <= LV_DISP_MEDIUM_LIMIT ? LV_DPX(10) : LV_DPX(20);
+    lv_style_int_t pad_small_value = lv_disp_get_size_category(NULL) <= LV_DISP_SIZE_MEDIUM ? LV_DPX(10) : LV_DPX(20);
     lv_style_set_pad_left(&styles->pad_small, LV_STATE_DEFAULT,  pad_small_value);
     lv_style_set_pad_right(&styles->pad_small, LV_STATE_DEFAULT, pad_small_value);
     lv_style_set_pad_top(&styles->pad_small, LV_STATE_DEFAULT,  pad_small_value);
@@ -844,10 +844,6 @@ static void tabview_win_shared_init(void)
     style_init_reset(&styles->tabview_btns_bg);
     lv_style_set_bg_opa(&styles->tabview_btns_bg, LV_STATE_DEFAULT, LV_OPA_COVER);
     lv_style_set_bg_color(&styles->tabview_btns_bg, LV_STATE_DEFAULT, COLOR_BG);
-    lv_style_set_border_color(&styles->tabview_btns_bg, LV_STATE_DEFAULT,
-                              IS_LIGHT ? lv_color_hex(0xe4eaf0) : lv_color_hex(0x3b3e42));
-    lv_style_set_border_width(&styles->tabview_btns_bg, LV_STATE_DEFAULT, LV_DPX(5));
-    lv_style_set_border_side(&styles->tabview_btns_bg, LV_STATE_DEFAULT, LV_BORDER_SIDE_BOTTOM);
     lv_style_set_text_color(&styles->tabview_btns_bg, LV_STATE_DEFAULT, COLOR_SCR_TEXT);
     lv_style_set_image_recolor(&styles->tabview_btns_bg, LV_STATE_DEFAULT, lv_color_hex(0x979a9f));
     lv_style_set_pad_top(&styles->tabview_btns_bg, LV_STATE_DEFAULT, LV_DPX(7));

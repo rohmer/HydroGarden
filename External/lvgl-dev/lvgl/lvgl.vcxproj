@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>..;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_LVGL_H_INCLUDE_SIMPLE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="lvgl-Debug.vgdbsettings" />
+    <None Include="lvgl-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\lvgl.h" />
+    <ClInclude Include="..\src\lvgl.h" />
+    <ClInclude Include="..\src\lv_api_map.h" />
+    <ClInclude Include="..\src\lv_conf_internal.h" />
+    <ClInclude Include="..\src\lv_conf_kconfig.h" />
+    <ClInclude Include="..\src\lv_conf_zephyr.h" />
+    <ClInclude Include="..\src\lv_core\lv_disp.h" />
+    <ClInclude Include="..\src\lv_core\lv_group.h" />
+    <ClInclude Include="..\src\lv_core\lv_indev.h" />
+    <ClInclude Include="..\src\lv_core\lv_obj.h" />
+    <ClInclude Include="..\src\lv_core\lv_obj_style_dec.h" />
+    <ClInclude Include="..\src\lv_core\lv_refr.h" />
+    <ClInclude Include="..\src\lv_core\lv_style.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw_arc.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw_blend.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw_img.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw_label.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw_line.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw_mask.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw_rect.h" />
+    <ClInclude Include="..\src\lv_draw\lv_draw_triangle.h" />
+    <ClInclude Include="..\src\lv_draw\lv_img_buf.h" />
+    <ClInclude Include="..\src\lv_draw\lv_img_cache.h" />
+    <ClInclude Include="..\src\lv_draw\lv_img_decoder.h" />
+    <ClInclude Include="..\src\lv_font\lv_font.h" />
+    <ClInclude Include="..\src\lv_font\lv_font_fmt_txt.h" />
+    <ClInclude Include="..\src\lv_font\lv_font_loader.h" />
+    <ClInclude Include="..\src\lv_font\lv_symbol_def.h" />
+    <ClInclude Include="..\src\lv_gpu\lv_gpu_nxp_pxp.h" />
+    <ClInclude Include="..\src\lv_gpu\lv_gpu_nxp_pxp_osa.h" />
+    <ClInclude Include="..\src\lv_gpu\lv_gpu_nxp_vglite.h" />
+    <ClInclude Include="..\src\lv_gpu\lv_gpu_stm32_dma2d.h" />
+    <ClInclude Include="..\src\lv_hal\lv_hal.h" />
+    <ClInclude Include="..\src\lv_hal\lv_hal_disp.h" />
+    <ClInclude Include="..\src\lv_hal\lv_hal_indev.h" />
+    <ClInclude Include="..\src\lv_hal\lv_hal_tick.h" />
+    <ClInclude Include="..\src\lv_misc\lv_anim.h" />
+    <ClInclude Include="..\src\lv_misc\lv_area.h" />
+    <ClInclude Include="..\src\lv_misc\lv_async.h" />
+    <ClInclude Include="..\src\lv_misc\lv_bidi.h" />
+    <ClInclude Include="..\src\lv_misc\lv_color.h" />
+    <ClInclude Include="..\src\lv_misc\lv_debug.h" />
+    <ClInclude Include="..\src\lv_misc\lv_fs.h" />
+    <ClInclude Include="..\src\lv_misc\lv_gc.h" />
+    <ClInclude Include="..\src\lv_misc\lv_ll.h" />
+    <ClInclude Include="..\src\lv_misc\lv_log.h" />
+    <ClInclude Include="..\src\lv_misc\lv_math.h" />
+    <ClInclude Include="..\src\lv_misc\lv_mem.h" />
+    <ClInclude Include="..\src\lv_misc\lv_printf.h" />
+    <ClInclude Include="..\src\lv_misc\lv_task.h" />
+    <ClInclude Include="..\src\lv_misc\lv_templ.h" />
+    <ClInclude Include="..\src\lv_misc\lv_txt.h" />
+    <ClInclude Include="..\src\lv_misc\lv_txt_ap.h" />
+    <ClInclude Include="..\src\lv_misc\lv_types.h" />
+    <ClInclude Include="..\src\lv_misc\lv_utils.h" />
+    <ClInclude Include="..\src\lv_themes\lv_theme.h" />
+    <ClInclude Include="..\src\lv_themes\lv_theme_empty.h" />
+    <ClInclude Include="..\src\lv_themes\lv_theme_material.h" />
+    <ClInclude Include="..\src\lv_themes\lv_theme_mono.h" />
+    <ClInclude Include="..\src\lv_themes\lv_theme_template.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_arc.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_bar.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_btn.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_btnmatrix.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_calendar.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_canvas.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_chart.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_checkbox.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_cont.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_cpicker.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_dropdown.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_gauge.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_img.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_imgbtn.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_keyboard.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_label.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_led.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_line.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_linemeter.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_list.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_msgbox.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_objmask.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_objx_templ.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_page.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_roller.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_slider.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_spinbox.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_spinner.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_switch.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_table.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_tabview.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_textarea.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_tileview.h" />
+    <ClInclude Include="..\src\lv_widgets\lv_win.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\lv_core\lv_disp.c" />
+    <ClCompile Include="..\src\lv_core\lv_group.c" />
+    <ClCompile Include="..\src\lv_core\lv_indev.c" />
+    <ClCompile Include="..\src\lv_core\lv_obj.c" />
+    <ClCompile Include="..\src\lv_core\lv_refr.c" />
+    <ClCompile Include="..\src\lv_core\lv_style.c" />
+    <ClCompile Include="..\src\lv_draw\lv_draw_arc.c" />
+    <ClCompile Include="..\src\lv_draw\lv_draw_blend.c" />
+    <ClCompile Include="..\src\lv_draw\lv_draw_img.c" />
+    <ClCompile Include="..\src\lv_draw\lv_draw_label.c" />
+    <ClCompile Include="..\src\lv_draw\lv_draw_line.c" />
+    <ClCompile Include="..\src\lv_draw\lv_draw_mask.c" />
+    <ClCompile Include="..\src\lv_draw\lv_draw_rect.c" />
+    <ClCompile Include="..\src\lv_draw\lv_draw_triangle.c" />
+    <ClCompile Include="..\src\lv_draw\lv_img_buf.c" />
+    <ClCompile Include="..\src\lv_draw\lv_img_cache.c" />
+    <ClCompile Include="..\src\lv_draw\lv_img_decoder.c" />
+    <ClCompile Include="..\src\lv_font\lv_font.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_dejavu_16_persian_hebrew.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_fmt_txt.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_loader.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_10.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_12.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_12_subpx.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_14.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_16.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_18.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_20.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_22.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_24.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_26.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_28.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_28_compressed.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_30.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_32.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_34.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_36.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_38.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_40.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_42.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_44.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_46.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_48.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_montserrat_8.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_simsun_16_cjk.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_unscii_16.c" />
+    <ClCompile Include="..\src\lv_font\lv_font_unscii_8.c" />
+    <ClCompile Include="..\src\lv_gpu\lv_gpu_nxp_pxp.c" />
+    <ClCompile Include="..\src\lv_gpu\lv_gpu_nxp_pxp_osa.c" />
+    <ClCompile Include="..\src\lv_gpu\lv_gpu_nxp_vglite.c" />
+    <ClCompile Include="..\src\lv_gpu\lv_gpu_stm32_dma2d.c" />
+    <ClCompile Include="..\src\lv_hal\lv_hal_disp.c" />
+    <ClCompile Include="..\src\lv_hal\lv_hal_indev.c" />
+    <ClCompile Include="..\src\lv_hal\lv_hal_tick.c" />
+    <ClCompile Include="..\src\lv_misc\lv_anim.c" />
+    <ClCompile Include="..\src\lv_misc\lv_area.c" />
+    <ClCompile Include="..\src\lv_misc\lv_async.c" />
+    <ClCompile Include="..\src\lv_misc\lv_bidi.c" />
+    <ClCompile Include="..\src\lv_misc\lv_color.c" />
+    <ClCompile Include="..\src\lv_misc\lv_debug.c" />
+    <ClCompile Include="..\src\lv_misc\lv_fs.c" />
+    <ClCompile Include="..\src\lv_misc\lv_gc.c" />
+    <ClCompile Include="..\src\lv_misc\lv_ll.c" />
+    <ClCompile Include="..\src\lv_misc\lv_log.c" />
+    <ClCompile Include="..\src\lv_misc\lv_math.c" />
+    <ClCompile Include="..\src\lv_misc\lv_mem.c" />
+    <ClCompile Include="..\src\lv_misc\lv_printf.c" />
+    <ClCompile Include="..\src\lv_misc\lv_task.c" />
+    <ClCompile Include="..\src\lv_misc\lv_templ.c" />
+    <ClCompile Include="..\src\lv_misc\lv_txt.c" />
+    <ClCompile Include="..\src\lv_misc\lv_txt_ap.c" />
+    <ClCompile Include="..\src\lv_misc\lv_utils.c" />
+    <ClCompile Include="..\src\lv_themes\lv_theme.c" />
+    <ClCompile Include="..\src\lv_themes\lv_theme_empty.c" />
+    <ClCompile Include="..\src\lv_themes\lv_theme_material.c" />
+    <ClCompile Include="..\src\lv_themes\lv_theme_mono.c" />
+    <ClCompile Include="..\src\lv_themes\lv_theme_template.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_arc.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_bar.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_btn.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_btnmatrix.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_calendar.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_canvas.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_chart.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_checkbox.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_cont.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_cpicker.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_dropdown.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_gauge.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_img.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_imgbtn.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_keyboard.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_label.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_led.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_line.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_linemeter.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_list.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_msgbox.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_objmask.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_objx_templ.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_page.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_roller.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_slider.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_spinbox.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_spinner.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_switch.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_table.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_tabview.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_textarea.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_tileview.c" />
+    <ClCompile Include="..\src\lv_widgets\lv_win.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{12FC350C-20F7-420C-8B75-EF8920AB4B3F}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>..;../../lvgl-dev;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_LVGL_H_INCLUDE_SIMPLE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="lvgldrivers-Debug.vgdbsettings" />
+    <None Include="lvgldrivers-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\display\drm.c" />
+    <ClCompile Include="..\display\fbdev.c" />
+    <ClCompile Include="..\display\GC9A01.c" />
+    <ClCompile Include="..\display\ILI9341.c" />
+    <ClCompile Include="..\display\monitor.c" />
+    <ClCompile Include="..\display\R61581.c" />
+    <ClCompile Include="..\display\SHARP_MIP.c" />
+    <ClCompile Include="..\display\SSD1963.c" />
+    <ClCompile Include="..\display\ST7565.c" />
+    <ClCompile Include="..\display\UC1610.c" />
+    <ClCompile Include="..\gtkdrv\gtkdrv.c" />
+    <ClCompile Include="..\indev\AD_touch.c" />
+    <ClCompile Include="..\indev\evdev.c" />
+    <ClCompile Include="..\indev\FT5406EE8.c" />
+    <ClCompile Include="..\indev\keyboard.c" />
+    <ClCompile Include="..\indev\libinput.c" />
+    <ClCompile Include="..\indev\mouse.c" />
+    <ClCompile Include="..\indev\mousewheel.c" />
+    <ClCompile Include="..\indev\XPT2046.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\display\drm.h" />
+    <ClInclude Include="..\display\fbdev.h" />
+    <ClInclude Include="..\display\GC9A01.h" />
+    <ClInclude Include="..\display\ILI9341.h" />
+    <ClInclude Include="..\display\monitor.h" />
+    <ClInclude Include="..\display\R61581.h" />
+    <ClInclude Include="..\display\SHARP_MIP.h" />
+    <ClInclude Include="..\display\SSD1963.h" />
+    <ClInclude Include="..\display\ST7565.h" />
+    <ClInclude Include="..\display\UC1610.h" />
+    <ClInclude Include="..\gtkdrv\gtkdrv.h" />
+    <ClInclude Include="..\indev\AD_touch.h" />
+    <ClInclude Include="..\indev\evdev.h" />
+    <ClInclude Include="..\indev\FT5406EE8.h" />
+    <ClInclude Include="..\indev\keyboard.h" />
+    <ClInclude Include="..\indev\libinput_drv.h" />
+    <ClInclude Include="..\indev\mouse.h" />
+    <ClInclude Include="..\indev\mousewheel.h" />
+    <ClInclude Include="..\indev\XPT2046.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

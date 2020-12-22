@@ -2,14 +2,22 @@
 
 #include <ctime>
 #include <fstream>
+#include <map>
 #include <sstream>
 #include <string>
+#include <vector>
 #include <External/JSON/json.hpp>
 
 #include "Logger.h"
 
 #define MLPSEC 1.083
 
+struct sNetwork
+{
+	std::string ssid, password;
+	bool isDefault;
+};
+		
 class Settings
 {
 private:
@@ -20,7 +28,7 @@ private:
 	uint pumpRunTime;
 	float dailyMLFood;										// 15ml per tablespoon
 	
-	std::string network;
+	std::map<std::string, sNetwork> networks;
 	
 public:
 	static Settings *GetInstance();
@@ -30,16 +38,10 @@ public:
 	uint LightDuration() { return lightDuration;}
 	uint PumpRunTime() { return pumpRunTime; }
 	float DailyMLFood() { return dailyMLFood; } 
-	std::string ConnectedNetwork()
-	{ 
-		return network;
-	}
 	
 	void SetLightTime(uint startHour, uint startMin, uint duration);
 	void SetPumpRunTime(uint runTimeSec);
 	void SetDailyMLFood(float MLOfFood);
-	
-	void SetNetwork(std::string network);
 		
 	bool LoadSettings();
 	
@@ -48,4 +50,8 @@ public:
 	
 	std::string ToJSON();
 	void FromJSON(std::string val);
+	
+	void AddNetwork(std::string ssid, std::string password, bool isDefault);
+	sNetwork GetNetwork(std::string ssid);
+	std::vector<sNetwork> GetNetworks();
 };

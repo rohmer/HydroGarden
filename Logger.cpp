@@ -6,14 +6,6 @@ Logger::Logger()
 {	
 }
 
-lv_log_print_g_cb_t Logger::log_cb(lv_log_level_t level, const char * file, int line, const char * fn_name, const char * dsc)
-{
-	if (level == LV_LOG_LEVEL_ERROR) LOGE(dsc);
-	if (level == LV_LOG_LEVEL_WARN)  LOGW(dsc);
-	if (level == LV_LOG_LEVEL_INFO || level == LV_LOG_LEVEL_TRACE) 
-		LOGI(dsc);
-}
-
 Logger *Logger::GetInstance()
 {
 	if (instance == nullptr)

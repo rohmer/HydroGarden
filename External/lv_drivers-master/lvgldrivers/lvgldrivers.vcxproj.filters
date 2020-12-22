@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{7dd6f55c-1648-4c7e-ae2a-cb76c3cc310b}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{8cc050c1-f6e0-43a7-8512-b32ffcc66e8a}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{a9167cbe-9b7e-4168-b85e-02c43a9ecba9}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{3b7e9ada-6775-444f-819b-624ed46ed086}</UniqueIdentifier>
+      <Extensions>vgdbsettings</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lvgldrivers-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="lvgldrivers-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\display\drm.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\fbdev.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\GC9A01.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\ILI9341.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\monitor.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\R61581.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\SHARP_MIP.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\SSD1963.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\ST7565.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\display\UC1610.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gtkdrv\gtkdrv.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\AD_touch.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\evdev.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\FT5406EE8.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\keyboard.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\libinput.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\mouse.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\mousewheel.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\indev\XPT2046.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\display\drm.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\fbdev.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\GC9A01.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\ILI9341.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\monitor.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\R61581.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\SHARP_MIP.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\SSD1963.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\ST7565.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\display\UC1610.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gtkdrv\gtkdrv.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\AD_touch.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\evdev.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\FT5406EE8.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\keyboard.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\libinput_drv.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\mouse.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\mousewheel.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\indev\XPT2046.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

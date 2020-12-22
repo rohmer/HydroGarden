@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{a7d854f4-3fa1-4f81-a07a-9c6b92fd9e67}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{51d23f14-5ad9-49ee-80a5-215d58854146}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{e6a98a4c-fbfb-4bd0-99c2-3ad6912a984f}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{c7257a03-f59e-42f0-b385-bbd504d9de28}</UniqueIdentifier>
+      <Extensions>vgdbsettings</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="crypto-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="crypto-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\aes.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\aes_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\aes_siv.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\aes_wrap.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\crypto.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\des_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\dh_group5.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\dh_groups.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\md5.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\md5_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\milenage.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\ms_funcs.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\random.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha1.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha1_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha256.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha256_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha384.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha384_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha512.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha512_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\tls.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\tls_openssl.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\asn1.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\bignum.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\pkcs1.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\pkcs5.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\pkcs8.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\rsa.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_common.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_cred.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_record.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server_i.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\x509v3.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-cbc.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-ccm.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-ctr.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-eax.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-encblock.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-gcm.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-internal-dec.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-internal-enc.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-omac1.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-siv.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-unwrap.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-wrap.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\crypto_internal-cipher.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\crypto_internal-modexp.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\crypto_internal-rsa.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\des-internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\dh_group5.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\dh_groups.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\fips_prf_internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\md4-internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\md5.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\md5-internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\milenage.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\ms_funcs.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\random.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\rc4.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-pbkdf2.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-prf.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-tlsprf.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-tprf.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha256.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha256-internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha512-internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\asn1.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\bignum.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\pkcs1.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\pkcs5.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\pkcs8.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\rsa.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client_ocsp.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client_read.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client_write.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_common.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_cred.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_record.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server_read.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server_write.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\x509v3.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\crypto_internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha384-internal.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

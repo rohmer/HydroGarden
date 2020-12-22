@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{F4B46F02-E818-40BC-829C-1DBCA8DA16FF}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>wpa_supplicant-2.6/src;wpa_supplicant-2.6/src/utils;wpa_supplicant-2.6/wpa_supplicant;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;CONFIG_CTRL_IFACE;CONFIG_CTRL_IFACE_UNIX;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="libwpa-Debug.vgdbsettings" />
+    <None Include="libwpa-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="wpa_cli_oper\bitarray.c" />
+    <ClCompile Include="wpa_cli_oper\compat.c" />
+    <ClCompile Include="wpa_cli_oper\smartlist.c" />
+    <ClCompile Include="wpa_cli_oper\wpa_cli_oper.c" />
+    <ClCompile Include="wpa_supplicant-2.6\src\common\cli.c" />
+    <ClCompile Include="wpa_supplicant-2.6\src\common\wpa_ctrl.c" />
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\common.c" />
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\edit.c" />
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\eloop.c" />
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\os_unix.c" />
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\wpa_debug.c" />
+    <ClCompile Include="wpa_supplicant-2.6\wpa_supplicant\libwpa_cli_wrapper.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="wpa_cli_oper\bitarray.h" />
+    <ClInclude Include="wpa_cli_oper\compat.h" />
+    <ClInclude Include="wpa_cli_oper\smartlist.h" />
+    <ClInclude Include="wpa_cli_oper\wpa_cli_oper.h" />
+    <ClInclude Include="wpa_supplicant-2.6\src\common\cli.h" />
+    <ClInclude Include="wpa_supplicant-2.6\src\common\wpa_ctrl.h" />
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\common.h" />
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\edit.h" />
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\eloop.h" />
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\os.h" />
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\wpa_debug.h" />
+    <ClInclude Include="wpa_supplicant-2.6\wpa_supplicant\libwpa_cli_wrapper.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

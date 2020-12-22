@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{B8D3BAE4-5865-4F9A-8E49-D1B7A01C67C3}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../../wpa_cli_wrapper-master/wpa_supplicant-2.6/src/utils;../../wpa_cli_wrapper-master/wpa_supplicant-2.6/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;CONFIG_CRYPTO_INTERNAL;CONFIG_SHA256;CONFIG_TLS_INTERNAL_CLIENT;CONFIG_TLS_INTERNAL_SERVER;CONFIG_INTERNAL_LIBTOMMATH;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="crypto-Debug.vgdbsettings" />
+    <None Include="crypto-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\aes.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\aes_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\aes_siv.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\aes_wrap.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\crypto.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\des_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\dh_group5.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\dh_groups.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\md5.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\md5_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\milenage.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\ms_funcs.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\random.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha1.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha1_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha256.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha256_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha384.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha384_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha512.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\sha512_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\tls.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\crypto\tls_openssl.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\asn1.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\bignum.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\pkcs1.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\pkcs5.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\pkcs8.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\rsa.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_common.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_cred.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_record.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server_i.h" />
+    <ClInclude Include="..\..\wpa_supplicant-2.9\src\tls\x509v3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-cbc.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-ccm.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-ctr.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-eax.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-encblock.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-gcm.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-internal-dec.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-internal-enc.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-omac1.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-siv.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-unwrap.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\aes-wrap.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\crypto_internal-cipher.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\crypto_internal-modexp.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\crypto_internal-rsa.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\crypto_internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\des-internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\dh_group5.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\dh_groups.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\fips_prf_internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\md4-internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\md5-internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\md5.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\milenage.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\ms_funcs.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\random.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\rc4.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-pbkdf2.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-prf.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-tlsprf.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1-tprf.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha1.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha256-internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha256.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha384-internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\crypto\sha512-internal.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\asn1.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\bignum.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\pkcs1.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\pkcs5.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\pkcs8.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\rsa.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client_ocsp.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client_read.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_client_write.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_common.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_cred.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_record.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server_read.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\tlsv1_server_write.c" />
+    <ClCompile Include="..\..\wpa_supplicant-2.9\src\tls\x509v3.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -32,7 +32,7 @@
  *      INCLUDES
  *********************/
 
-#include "lv_conf.h"
+#include "../lv_conf_internal.h"
 
 #if LV_USE_GPU_NXP_PXP
 
@@ -56,7 +56,7 @@
     #define PXP_OUT_PIXEL_FORMAT kPXP_OutputPixelFormatRGB565
     #define PXP_AS_PIXEL_FORMAT kPXP_AsPixelFormatRGB565
     #define PXP_PS_PIXEL_FORMAT kPXP_PsPixelFormatRGB565
-#elif
+#else
     #error Only 16bit color depth is supported. Set LV_COLOR_DEPTH to 16.
 #endif
 

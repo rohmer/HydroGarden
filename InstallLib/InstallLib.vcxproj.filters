@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{2e987790-ed3d-4b5c-bc80-dacdb8ba0004}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{265725a0-e65b-40e6-a9bc-129b69a81a59}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{4808a222-0443-457c-bd30-1deef7ca0da1}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{8e396b01-7ecd-4a43-ad47-39758549b89f}</UniqueIdentifier>
+      <Extensions>vgdbsettings</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="InstallLib.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="InstallationDesc.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Package.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InstallLib.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="InstallationDesc.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Version.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="sFile.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Package.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InstallLib-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="InstallLib-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+</Project>

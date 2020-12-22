@@ -1,9 +1,11 @@
 #include "UI.h"
+FILE *UserInterface::fp;
 
+int UserInterface::currentBriteness = 0;
 lv_style_t UserInterface::styleRed, UserInterface::styleGreen;
 bool UserInterface::isPriming = false;
 
-int UserInterface::networkCheckCtr = 600;
+int UserInterface::networkCheckCtr = 100*60;
 lv_obj_t *UserInterface::networkStatus = nullptr;
 lv_obj_t *UserInterface::waterLED = nullptr;
 lv_obj_t *UserInterface::feedLED = nullptr;
@@ -54,6 +56,7 @@ void UserInterface::init()
 	lv_disp_drv_init(&disp_drv);
 	disp_drv.buffer = &disp_buf;
 	disp_drv.flush_cb = fbdev_flush;
+
 	lv_disp_t *disp;
 	disp = lv_disp_drv_register(&disp_drv);
 	evdev_init();
@@ -99,28 +102,27 @@ void UserInterface::updateUITask(lv_task_t *task)
 		lv_led_on(feedingLED);
 	else
 		lv_led_off(feedingLED);
-
 	networkCheckCtr++;
-	if (networkCheckCtr > 600)
+	if (networkCheckCtr > 50)
 	{
 		networkNotif();
 		networkCheckCtr = 0;
+	
+	
+		if (Hardware::WaterLevel())
+			lv_obj_set_style_local_bg_color(waterLED, LV_LED_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_GREEN);
+		else
+			lv_obj_set_style_local_bg_color(waterLED, LV_LED_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_RED);
+	
+		lv_led_on(waterLED);
+
+		if (Hardware::FeedLevel())
+			lv_obj_set_style_local_bg_color(feedLED, LV_LED_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_GREEN);
+		else
+			lv_obj_set_style_local_bg_color(feedLED, LV_LED_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_RED);
+	
+		lv_led_on(feedLED);
 	}
-	
-	if (Hardware::WaterLevel())
-		lv_obj_set_style_local_bg_color(waterLED, LV_LED_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_GREEN);
-	else
-		lv_obj_set_style_local_bg_color(waterLED, LV_LED_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_RED);
-	
-	lv_led_on(waterLED);
-
-	if (Hardware::FeedLevel())
-		lv_obj_set_style_local_bg_color(feedLED, LV_LED_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_GREEN);
-	else
-		lv_obj_set_style_local_bg_color(feedLED, LV_LED_PART_MAIN, LV_STATE_DEFAULT, LV_COLOR_RED);
-	
-	lv_led_on(feedLED);
-
 }
 
 void UserInterface::networkNotif()
@@ -189,8 +191,6 @@ void UserInterface::CreateMainWindow()
 	lv_label_set_text(logLbl, lss.str().c_str());
 	lv_obj_set_event_cb(logButton, log_click_event_cb);
 	
-	// Commenting out until I figure out how to get an actual connection made
-	/*
 	lv_obj_t *netButton = lv_btn_create(lv_scr_act(), nullptr);
 	lv_obj_set_size(netButton, 200, 50);
 	lv_obj_set_pos(netButton, 25, 195);
@@ -200,7 +200,7 @@ void UserInterface::CreateMainWindow()
 	lv_obj_set_style_local_text_font(netLbl, LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, &lv_font_montserrat_28);
 	lv_label_set_text(netLbl, nss.str().c_str());
 	lv_obj_set_event_cb(netButton, network_click_cb);
-	*/
+
 	statusWidget();
 	
 	lv_style_init(&styleRed);
@@ -688,10 +688,20 @@ void UserInterface::close_settings_cb(lv_obj_t *sw, lv_event_t e)
 }
 
 void UserInterface::SetBriteness(uint briteness)
-
 {
-	std::ofstream f;
-	f.open("/sys/class/backlight/rpi_backlight/brightness", std::_Ios_Openmode::_S_app);
-	f << briteness << std::endl;
-	f.close();
+	if (currentBriteness == briteness)
+		return;
+	currentBriteness = briteness;
+	try
+	{
+		std::ofstream f;
+		f.open("/sys/class/backlight/rpi_backlight/brightness");
+		f << briteness << std::endl;
+		f.close();	
+	}
+	catch (const std::exception&)
+	{
+		
+	}
+	
 }

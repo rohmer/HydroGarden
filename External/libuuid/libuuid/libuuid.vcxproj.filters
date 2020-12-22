@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{a589065e-e7d9-4056-aec2-62dc6d00bfb8}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{cf661998-ccb9-4cc2-b52f-e903b7f76d9c}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{e0745398-122e-4f81-bae3-f11b45a94df3}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{ae2595cf-4ddb-43b4-9b6a-5847a0da1104}</UniqueIdentifier>
+      <Extensions>vgdbsettings</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libuuid-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="libuuid-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\clear.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\compare.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\copy.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\gen_uuid.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\isnull.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\pack.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\parse.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\randutils.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unpack.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unparse.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\all-io.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\c.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\config.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\randutils.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\uuid.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\uuidd.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\uuidP.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

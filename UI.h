@@ -90,4 +90,8 @@ private:
 	static lv_obj_t *networkStatus;
 	
 	static int networkCheckCtr;
+	static FILE *fp;
+	
+	static int currentBriteness;
 };
+

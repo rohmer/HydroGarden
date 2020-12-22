@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{e7d56b39-73d6-43be-9cce-34a109cc3f1d}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{5365850f-e127-42d4-aa77-3cf77e809183}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{02a5144d-912e-4a80-bab7-3128c089bcc0}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{e0e4ae62-8bed-4298-a0be-e77a8a0e2de5}</UniqueIdentifier>
+      <Extensions>vgdbsettings</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="libwpa-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="libwpa-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\common.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\edit.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\eloop.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\os_unix.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_supplicant-2.6\src\common\cli.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_supplicant-2.6\src\common\wpa_ctrl.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_supplicant-2.6\wpa_supplicant\libwpa_cli_wrapper.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_supplicant-2.6\src\utils\wpa_debug.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_cli_oper\bitarray.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_cli_oper\compat.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_cli_oper\smartlist.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="wpa_cli_oper\wpa_cli_oper.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\common.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\edit.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\eloop.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\os.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_supplicant-2.6\src\common\cli.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_supplicant-2.6\src\common\wpa_ctrl.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_supplicant-2.6\wpa_supplicant\libwpa_cli_wrapper.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_supplicant-2.6\src\utils\wpa_debug.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_cli_oper\bitarray.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_cli_oper\compat.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_cli_oper\smartlist.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="wpa_cli_oper\wpa_cli_oper.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
