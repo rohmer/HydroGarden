@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
 	Address address(Ipv4::any(), port);
 	
 	WebServer ws(address);
-	ws.init();
 	
 	Scheduler *scheduler = Scheduler::GetInstance();
 	

@@ -1,32 +1,34 @@
 #include "WebServer.h"
 
-void WebServer::init(size_t thr)
+WebServer::WebServer(Address addr) :
+	httpEndpoint(std::make_shared<Http::Endpoint>(addr))
 {
-	auto opts = Http::Endpoint::options()
-	    .threads(static_cast<int>(thr));
+	auto opts = Http::Endpoint::options().threads(2);
 	httpEndpoint->init(opts);
-	createDescription();
-	
+	router = new Rest::Router();
+	discovery = std::make_shared<Discovery>(
+		router,
+		std::bind(&WebServer::getSettings, this, placeholders::_1),
+		std::bind(&WebServer::setSettings, this, placeholders::_1)
+	);
+	createSettings();
+	createRoutes();
+	httpEndpoint->setHandler(router->handler());
 	wsThread = std::thread(&WebServer::start, this);
 }
 
 void WebServer::start()
 {
-	{
-		router.initFromDescription(desc);
-
-		Rest::Swagger swagger(desc);
-		swagger
-		    .uiPath("/doc")
-		    .uiDirectory("/home/octal/code/web/swagger-ui-2.1.4/dist")
-		    .apiPath("/hydrogarden-api.json")
-		    .install(router);
-
-		httpEndpoint->setHandler(router.handler());
+	{		
 		httpEndpoint->serve();
 	}	
 }
 
+void WebServer::createRoutes()
+{
+	Rest::Routes::Get(*router, "/logs", Rest::Routes::bind(&WebServer::getLogs, this));
+}
+/*
 void WebServer::createDescription()
 {
 	desc
@@ -56,12 +58,6 @@ void WebServer::createDescription()
 		.response(Http::Code::Ok, "HydroGarden Update");
 	
 	desc
-	    .route(desc.get("/settings"))
-	    .bind(&WebServer ::getSettings, this)
-	    .produces(MIME(Application, Json), MIME(Application, Xml))
-	    .response(Http::Code::Ok, "HydroGarden Settings");
-
-	desc
 		.route(desc.get("/logs"))
 		.bind(&WebServer::getLogs, this)
 		.produces(MIME(Application, Json), MIME(Application, Xml))
@@ -83,8 +79,196 @@ void WebServer::createDescription()
 		.bind(&WebServer::getInfo, this)
 		.produces(MIME(Application, Json), MIME(Application, Xml))
 		.response(Http::Code::Ok, "HydroGarden Info");
+	
+	//createSettings();
 }
-
+*/
+void WebServer::createSettings()
+{
+	discovery->AddSetting(
+		Setting(
+			"lightStartHour",
+			"Starting hour for the grow light",
+			Setting::eINT,
+			0,
+			23,
+			Settings::GetInstance()->LightStartHour(),
+			false
+		)
+	);
+	discovery->AddSetting(
+		Setting(
+			"lightStartMin",
+		"Starting minute for the grow light",
+		Setting::eINT,
+		0,
+		59,
+		Settings::GetInstance()->LightStartMin(),
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"lightDuration",
+		"Duration in minutes grow light will be on",
+		Setting::eINT,
+		0,
+		1440,
+		Settings::GetInstance()->LightDuration(),
+		false)
+);
+	discovery->AddSetting(
+		Setting(
+			"pumpRunTime",
+		"Duration in minutes to run pumps",
+		Setting::eINT,
+		0,
+		59,
+		Settings::GetInstance()->PumpRunTime(),
+		false)
+);
+	discovery->AddSetting(
+		Setting(
+			"dailyMLFood",
+		"Number of milliliters of food per day",
+		Setting::eFLOAT,
+		0.0,
+		200.0,
+		Settings::GetInstance()->DailyMLFood(),
+		false)
+);
+	discovery->AddSetting(
+		Setting(	
+			"networkSSID1",
+			"SSID of a wireless network",
+			Setting::eSTR,
+			"",
+			false		
+		)
+	);
+	discovery->AddSetting(
+	Setting(	
+		"networkSSID2",
+		"SSID of a wireless network",
+		Setting::eSTR,
+		"",
+		false)
+);
+	discovery->AddSetting(
+	Setting(	
+		"networkSSID3",
+		"SSID of a wireless network",
+		Setting::eSTR,
+		"",
+		false)
+);
+	discovery->AddSetting(
+	Setting(	
+		"networkSSID4",
+		"SSID of a wireless network",
+		Setting::eSTR,
+		"",
+		false)
+);
+	discovery->AddSetting(
+	Setting(	
+		"networkSSID5",
+		"SSID of a wireless network",
+		Setting::eSTR,
+		"",
+		false)
+);
+	discovery->AddSetting(
+		Setting(
+			"networkPassword1",
+			"Password of wireless network",
+		Setting::eSTR,
+		"",
+		false
+		)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkPassword2",
+		"Password of wireless network",
+		Setting::eSTR,
+		"",
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkPassword3",
+		"Password of wireless network",
+		Setting::eSTR,
+		"",
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkPassword4",
+		"Password of wireless network",
+		Setting::eSTR,
+		"",
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkPassword5",
+		"Password of wireless network",
+		Setting::eSTR,
+		"",
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkDefault1",
+		"Is network default",
+		Setting::eBOOL,
+		false,
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkDefault2",
+		"Is network default",
+		Setting::eBOOL,
+		false,
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkDefault3",
+		"Is network default",
+		Setting::eBOOL,
+		false,
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkDefault4",
+		"Is network default",
+		Setting::eBOOL,
+		false,
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"networkDefault5",
+		"Is network default",
+		Setting::eBOOL,
+		false,
+		false)
+	);
+	discovery->AddSetting(
+		Setting(
+			"hostname",
+			"HydroGarden device hostname",
+			Setting::eSTR,
+			"",
+			false
+		)
+	);
+}
+/*
 void WebServer::getStates(const Rest::Request &req, Http::ResponseWriter response)
 {
 	std::stringstream ss;
@@ -93,19 +277,12 @@ void WebServer::getStates(const Rest::Request &req, Http::ResponseWriter respons
 	response.send(Http::Code::Ok, StateChange::GetInstance()->ToJSON());
 }
 
-void WebServer::getSettings(const Rest::Request &req, Http::ResponseWriter response)
-{
-	std::stringstream ss;
-	ss << "getSetttings() from: " << req.address().host();
-	LOGI(ss.str());
-	response.send(Http::Code::Ok, Settings::GetInstance()->ToJSON());
-}
-
 void WebServer::clearLogs(const Rest::Request &req, Http::ResponseWriter response)
 {
 	Logger::GetInstance()->ClearLog();
 	response.send(Http::Code::Ok, "Logs Cleared");
 }
+*/
 
 void WebServer::getLogs(const Rest::Request &req, Http::ResponseWriter response)
 {
@@ -116,6 +293,7 @@ void WebServer::getLogs(const Rest::Request &req, Http::ResponseWriter response)
 	response.send(Http::Code::Ok, Logger::GetInstance()->ToJSON());
 }
 
+/*
 void WebServer::getInfo(const Rest::Request &req, Http::ResponseWriter response)
 {
 	response.send(Http::Code::Ok, Info::GetInfo());
@@ -211,4 +389,54 @@ void WebServer::update(const Rest::Request &req, Http::ResponseWriter response)
 		response.send(Http::Code::Ok, html.str());
 			
 	}
+}
+*/
+std::map<std::string, bool> WebServer::setSettings(std::map<std::string, Setting> settings)
+{
+}
+	
+std::map<std::string, Setting> WebServer::getSettings(std::map<std::string, Setting> settings)
+{
+	settings["lightStartHour"].SetValue(Settings::GetInstance()->LightStartHour());
+	settings["lightStartMin"].SetValue(Settings::GetInstance()->LightStartMin());
+	settings["lightDuration"].SetValue(Settings::GetInstance()->LightDuration());
+	settings["pumpDuration"].SetValue(Settings::GetInstance()->PumpRunTime());
+	settings["dailyMLFood"].SetValue(Settings::GetInstance()->DailyMLFood());
+	settings["hostname"].SetValue(Settings::GetInstance()->GetHostname());
+	std::vector<sNetwork> networks = Settings::GetInstance()->GetNetworks();
+	for (int i = networks.size(); i < 5; i++)
+	{
+		std::stringstream s1;
+		int ctr = i + 1;
+		s1 << "networkSSID" << ctr;
+		settings[s1.str()].SetValue("");
+		s1.str("");
+		s1 << "networkPassword" << ctr;
+		settings[s1.str()].SetValue("");
+		s1.str("");
+		s1 << "networkDefault" << ctr;
+		settings[s1.str()].SetValue(false);
+	}
+	
+	for (int i = 0; i < networks.size(); i++)
+	{
+		if (i > 4)
+			break;
+		std::stringstream s1;
+		int ctr = i + 1;
+		s1 << "networkSSID" << ctr;
+		settings[s1.str()].SetValue(networks[i].ssid);
+		s1.str("");
+		s1 << "networkPassword" << ctr;
+#ifdef NETWORKPASS_CLEARTEXT
+		settings[s1.str()].SetValue(networks[i].password);
+#else
+		settings[s1.str()].SetValue("*");
+#endif
+		s1.str("");
+		s1 << "networkDefault" << ctr;
+		settings[s1.str()].SetValue(networks[i].isDefault);
+	}
+	
+	return settings;
 }

@@ -28,11 +28,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
-    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <ToolchainVersion>8.3.0/8.2.1/r3</ToolchainVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
-    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <ToolchainVersion>8.3.0/8.2.1/r3</ToolchainVersion>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
@@ -46,6 +46,22 @@
       <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>stdc++fs;pthread; mnl;expat;lzma;z;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;External;External/JSON;External/libarchive/libarchive;External/lvgl-dev;External/PicoSHA2-master;External/pistache-master/include;InstallLib;External/libwpa/wpa_cli_oper;External/libwpa/wpa_supplicant-2.6/wpa_supplicant;External/lv_drivers-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;LV_CONF_INCLUDE_SIMPLE;LV_LVGL_H_INCLUDE_SIMPLE;CONFIG_CTRL_IFACE;CONFIG_CTRL_IFACE_UNIX;CONFIG_CTRL_IFACE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>stdc++fs;pthread; mnl;expat;lzma;z;atomic;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -237,6 +253,9 @@
     <ProjectReference Include="bcm2835\bcm2835.vcxproj">
       <Project>{8c361292-1874-4820-9056-4753694c92eb}</Project>
     </ProjectReference>
+    <ProjectReference Include="Discovery\Discovery.vcxproj">
+      <Project>{12e255ab-46d4-4697-9685-684565c7fd4b}</Project>
+    </ProjectReference>
     <ProjectReference Include="External\libarchive\libarchive\libarchive.vcxproj">
       <Project>{1df41516-8cf7-4e3e-bba3-138f027a82b3}</Project>
     </ProjectReference>
@@ -245,9 +264,6 @@
     </ProjectReference>
     <ProjectReference Include="External\libwpa\libwpa.vcxproj">
       <Project>{f4b46f02-e818-40bc-829c-1dbca8da16ff}</Project>
-    </ProjectReference>
-    <ProjectReference Include="External\libwpa\LibWPATests\LibWPATests.vcxproj">
-      <Project>{fb365da3-8acc-43ff-bcdc-79a6a1d78006}</Project>
     </ProjectReference>
     <ProjectReference Include="External\lvgl-dev\lvgl\lvgl.vcxproj">
       <Project>{e0b27ac8-4036-46e1-aab4-cc4177af88bb}</Project>

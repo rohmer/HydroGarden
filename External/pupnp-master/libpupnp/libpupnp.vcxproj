@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{5BC897B7-0A39-4F62-986E-306C708B29C0}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r3</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
+    <ToolchainVersion>8.3.0/8.2.1/r3</ToolchainVersion>
+    <GNUTargetType>DynamicLibrary</GNUTargetType>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>..;../ixml/inc;../upnp/inc;../upnp/src/inc;../upnp/src/threadutil;../ixml/src/inc;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;HAVE_CONFIG_H;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="libpupnp-Debug.vgdbsettings" />
+    <None Include="libpupnp-Release.vgdbsettings" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <None Include="..\upnp\CMakeLists.txt" />
+    <None Include="..\upnp\Makefile" />
+    <ClCompile Include="..\ixml\src\attr.c" />
+    <ClCompile Include="..\ixml\src\document.c" />
+    <ClCompile Include="..\ixml\src\element.c" />
+    <ClCompile Include="..\ixml\src\ixml.c" />
+    <ClCompile Include="..\ixml\src\ixmldebug.c" />
+    <ClCompile Include="..\ixml\src\ixmlmembuf.c" />
+    <ClCompile Include="..\ixml\src\ixmlparser.c" />
+    <ClCompile Include="..\ixml\src\namedNodeMap.c" />
+    <ClCompile Include="..\ixml\src\node.c" />
+    <ClCompile Include="..\ixml\src\nodeList.c" />
+    <ClCompile Include="..\upnp\src\inet_pton.c" />
+    <ClCompile Include="..\upnp\src\win_dll.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpActionComplete.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpActionRequest.c" />
+    <ClCompile Include="..\upnp\src\api\upnpapi.c" />
+    <ClCompile Include="..\upnp\src\api\upnpdebug.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpDiscovery.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpEvent.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpEventSubscribe.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpExtraHeaders.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpFileInfo.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpStateVarComplete.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpStateVarRequest.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpString.c" />
+    <ClCompile Include="..\upnp\src\api\UpnpSubscriptionRequest.c" />
+    <ClCompile Include="..\upnp\src\api\upnptools.c" />
+    <ClCompile Include="..\upnp\src\gena\gena_callback2.c" />
+    <ClCompile Include="..\upnp\src\gena\gena_ctrlpt.c" />
+    <ClCompile Include="..\upnp\src\gena\gena_device.c" />
+    <ClCompile Include="..\upnp\src\genlib\client_table\client_table.c" />
+    <ClCompile Include="..\upnp\src\genlib\client_table\GenlibClientSubscription.c" />
+    <ClCompile Include="..\upnp\src\genlib\miniserver\miniserver.c" />
+    <ClCompile Include="..\upnp\src\genlib\net\sock.c" />
+    <ClCompile Include="..\upnp\src\genlib\net\http\httpparser.c" />
+    <ClCompile Include="..\upnp\src\genlib\net\http\httpreadwrite.c" />
+    <ClCompile Include="..\upnp\src\genlib\net\http\parsetools.c" />
+    <ClCompile Include="..\upnp\src\genlib\net\http\statcodes.c" />
+    <ClCompile Include="..\upnp\src\genlib\net\http\webserver.c" />
+    <ClCompile Include="..\upnp\src\genlib\net\uri\uri.c" />
+    <ClCompile Include="..\upnp\src\genlib\service_table\service_table.c" />
+    <ClCompile Include="..\upnp\src\genlib\util\list.c" />
+    <ClCompile Include="..\upnp\src\genlib\util\membuffer.c" />
+    <ClCompile Include="..\upnp\src\genlib\util\strintmap.c" />
+    <ClCompile Include="..\upnp\src\genlib\util\upnp_timeout.c" />
+    <ClCompile Include="..\upnp\src\genlib\util\util.c" />
+    <ClCompile Include="..\upnp\src\soap\soap_common.c" />
+    <ClCompile Include="..\upnp\src\soap\soap_ctrlpt.c" />
+    <ClCompile Include="..\upnp\src\soap\soap_device.c" />
+    <ClCompile Include="..\upnp\src\ssdp\SSDPResultData.c" />
+    <ClCompile Include="..\upnp\src\ssdp\SSDPResultDataCallback.c" />
+    <ClCompile Include="..\upnp\src\ssdp\ssdp_ctrlpt.c" />
+    <ClCompile Include="..\upnp\src\ssdp\ssdp_device.c" />
+    <ClCompile Include="..\upnp\src\ssdp\ssdp_server.c" />
+    <ClCompile Include="..\upnp\src\threadutil\FreeList.c" />
+    <ClCompile Include="..\upnp\src\threadutil\LinkedList.c" />
+    <ClCompile Include="..\upnp\src\threadutil\ThreadPool.c" />
+    <ClCompile Include="..\upnp\src\threadutil\TimerThread.c" />
+    <ClCompile Include="..\upnp\src\urlconfig\urlconfig.c" />
+    <ClCompile Include="..\upnp\src\uuid\md5.c" />
+    <ClCompile Include="..\upnp\src\uuid\sysdep.c" />
+    <ClCompile Include="..\upnp\src\uuid\uuid.c" />
+    <ClInclude Include="..\ixml\src\inc\ixmlmembuf.h" />
+    <ClInclude Include="..\ixml\src\inc\ixmlparser.h" />
+    <ClInclude Include="..\upnp\inc\Callback.h" />
+    <ClInclude Include="..\upnp\inc\ithread.h" />
+    <ClInclude Include="..\upnp\inc\list.h" />
+    <ClInclude Include="..\upnp\inc\upnp.h" />
+    <ClInclude Include="..\upnp\inc\UpnpActionComplete.h" />
+    <ClInclude Include="..\upnp\inc\UpnpActionRequest.h" />
+    <ClInclude Include="..\upnp\inc\upnpconfig.h" />
+    <ClInclude Include="..\upnp\inc\upnpdebug.h" />
+    <ClInclude Include="..\upnp\inc\UpnpDiscovery.h" />
+    <ClInclude Include="..\upnp\inc\UpnpEvent.h" />
+    <ClInclude Include="..\upnp\inc\UpnpEventSubscribe.h" />
+    <ClInclude Include="..\upnp\inc\UpnpExtraHeaders.h" />
+    <ClInclude Include="..\upnp\inc\UpnpFileInfo.h" />
+    <ClInclude Include="..\upnp\inc\UpnpGlobal.h" />
+    <ClInclude Include="..\upnp\inc\UpnpInet.h" />
+    <ClInclude Include="..\upnp\inc\UpnpIntTypes.h" />
+    <ClInclude Include="..\upnp\inc\UpnpStateVarComplete.h" />
+    <ClInclude Include="..\upnp\inc\UpnpStateVarRequest.h" />
+    <ClInclude Include="..\upnp\inc\UpnpStdInt.h" />
+    <ClInclude Include="..\upnp\inc\UpnpString.h" />
+    <ClInclude Include="..\upnp\inc\UpnpSubscriptionRequest.h" />
+    <ClInclude Include="..\upnp\inc\upnptools.h" />
+    <ClInclude Include="..\upnp\inc\UpnpUniStd.h" />
+    <ClInclude Include="..\upnp\src\inc\client_table.h" />
+    <ClInclude Include="..\upnp\src\inc\config.h" />
+    <ClInclude Include="..\upnp\src\inc\gena.h" />
+    <ClInclude Include="..\upnp\src\inc\gena_ctrlpt.h" />
+    <ClInclude Include="..\upnp\src\inc\gena_device.h" />
+    <ClInclude Include="..\upnp\src\inc\GenlibClientSubscription.h" />
+    <ClInclude Include="..\upnp\src\inc\httpparser.h" />
+    <ClInclude Include="..\upnp\src\inc\httpreadwrite.h" />
+    <ClInclude Include="..\upnp\src\inc\inet_pton.h" />
+    <ClInclude Include="..\upnp\src\inc\md5.h" />
+    <ClInclude Include="..\upnp\src\inc\membuffer.h" />
+    <ClInclude Include="..\upnp\src\inc\miniserver.h" />
+    <ClInclude Include="..\upnp\src\inc\netall.h" />
+    <ClInclude Include="..\upnp\src\inc\parsetools.h" />
+    <ClInclude Include="..\upnp\src\inc\service_table.h" />
+    <ClInclude Include="..\upnp\src\inc\soaplib.h" />
+    <ClInclude Include="..\upnp\src\inc\sock.h" />
+    <ClInclude Include="..\upnp\src\inc\ssdplib.h" />
+    <ClInclude Include="..\upnp\src\inc\statcodes.h" />
+    <ClInclude Include="..\upnp\src\inc\statuscodes.h" />
+    <ClInclude Include="..\upnp\src\inc\strintmap.h" />
+    <ClInclude Include="..\upnp\src\inc\sysdep.h" />
+    <ClInclude Include="..\upnp\src\inc\unixutil.h" />
+    <ClInclude Include="..\upnp\src\inc\upnpapi.h" />
+    <ClInclude Include="..\upnp\src\inc\upnputil.h" />
+    <ClInclude Include="..\upnp\src\inc\upnp_timeout.h" />
+    <ClInclude Include="..\upnp\src\inc\uri.h" />
+    <ClInclude Include="..\upnp\src\inc\urlconfig.h" />
+    <ClInclude Include="..\upnp\src\inc\uuid.h" />
+    <ClInclude Include="..\upnp\src\inc\VirtualDir.h" />
+    <ClInclude Include="..\upnp\src\inc\webserver.h" />
+    <ClInclude Include="..\upnp\src\ssdp\SSDPResultData.h" />
+    <ClInclude Include="..\upnp\src\ssdp\SSDPResultDataCallback.h" />
+    <ClInclude Include="..\upnp\src\threadutil\FreeList.h" />
+    <ClInclude Include="..\upnp\src\threadutil\LinkedList.h" />
+    <ClInclude Include="..\upnp\src\threadutil\ThreadPool.h" />
+    <ClInclude Include="..\upnp\src\threadutil\TimerThread.h" />
+  </ItemGroup>
+</Project>

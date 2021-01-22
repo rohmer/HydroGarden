@@ -7,35 +7,31 @@
 #include <pistache/http.h>
 #include <pistache/description.h>
 #include <pistache/endpoint.h>
+#include <pistache/net.h>
 #include <thread>
 #include <fstream>
 #include <ifaddrs.h>
 #include <netinet/in.h> 
 #include <string.h> 
 #include <arpa/inet.h>
+#include <vector>
 
 using namespace std;
-using namespace Pistache;
 
 #include "Logs.h"
 #include "SettingsEP.h"
 #include "StateChange.h"
 #include "Info.h"
 #include "Package.h"
+#include "Discovery/Discovery.h"
 
 class WebServer {
 public:
-	WebServer(Address addr)
-		: httpEndpoint(std::make_shared<Http::Endpoint>(addr))
-		, desc("HydroGarden API", "0.1")
-	{}
-
-	void init(size_t thr = 2);
+	WebServer(Address addr);
 
 	void start();
 
 private:
-	void getSettings(const Rest::Request &request, Http::ResponseWriter response);
 	void getLogs(const Rest::Request &request, Http::ResponseWriter response);
 	void clearLogs(const Rest::Request &request, Http::ResponseWriter response);
 	void getStates(const Rest::Request &request, Http::ResponseWriter response);
@@ -44,14 +40,16 @@ private:
 	void updateStatic(const Rest::Request &request, Http::ResponseWriter response);
 	void update(const Rest::Request &request, Http::ResponseWriter response);
 	
-	void createDescription();
+	void createRoutes();
 	
-
+	void createSettings();
+	
+	std::map<std::string, Setting> getSettings(std::map<std::string, Setting> settings);
+	std::map<std::string, bool> setSettings(std::map<std::string, Setting> settings);
 	
 	std::thread wsThread;
-	
+	Pistache::Rest::Router *router;
 	std::shared_ptr<Http::Endpoint> httpEndpoint;
-	Rest::Description desc;
-	Rest::Router router;
+	std::shared_ptr<Discovery> discovery;
 };
 

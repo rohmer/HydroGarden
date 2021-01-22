@@ -358,3 +358,6 @@ Build/HydroGarden.tar.gz
 bcm2835/.visualgdb/CodeDB/bcm2835-Debug-VisualGDB/codedb.lck
 *.gz
 *.npa00
+*.lck
+*.000
+*.001

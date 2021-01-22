@@ -28,11 +28,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <GNUConfigurationType>Debug</GNUConfigurationType>
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
-    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <ToolchainVersion>8.3.0/8.2.1/r3</ToolchainVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ToolchainID>com.visualgdb.raspberry_pi</ToolchainID>
-    <ToolchainVersion>8.3.0/8.2.1/r2</ToolchainVersion>
+    <ToolchainVersion>8.3.0/8.2.1/r3</ToolchainVersion>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
@@ -53,7 +53,18 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>../wpa_cli_oper;../wpa_supplicant-2.6/wpa_supplicant;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
     </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>C:/Users/rohme/source/repos/HydroGarden/VisualGDB/Debug</LibrarySearchDirectories>
+      <AdditionalLibraryNames>wpa</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LibWPATests.cpp" />

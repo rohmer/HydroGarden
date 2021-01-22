@@ -27,12 +27,17 @@
       <Version>
         <GCC>8.3.0</GCC>
         <GDB>8.2.1</GDB>
-        <Revision>2</Revision>
+        <Revision>3</Revision>
       </Version>
     </ToolchainID>
     <ProjectFile>HydroGarden.vcxproj</ProjectFile>
-    <ParallelJobCount>0</ParallelJobCount>
+    <RemoteBuildEnvironment>
+      <Records />
+      <EnvironmentSetupFiles />
+    </RemoteBuildEnvironment>
+    <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
+    <BuildAsRoot>false</BuildAsRoot>
   </Build>
   <CustomBuild>
     <PreSyncActions />
@@ -52,18 +57,27 @@
     <ShowMessageAfterExecuting>true</ShowMessageAfterExecuting>
   </CustomShortcuts>
   <UserDefinedVariables />
+  <ImportedPropertySheets />
   <CodeSense>
     <Enabled>Unknown</Enabled>
     <ExtraSettings>
       <HideErrorsInSystemHeaders>true</HideErrorsInSystemHeaders>
       <SupportLightweightReferenceAnalysis>true</SupportLightweightReferenceAnalysis>
+      <DiscoverySettings>
+        <Mode>Enabled</Mode>
+        <SearchInProjectDir>true</SearchInProjectDir>
+        <SearchInSourceDirs>true</SearchInSourceDirs>
+        <SearchInIncludeSubdirs>true</SearchInIncludeSubdirs>
+      </DiscoverySettings>
       <CheckForClangFormatFiles>true</CheckForClangFormatFiles>
-      <FormattingEngine xsi:nil="true" />
+      <FormattingEngine>ClangFormat</FormattingEngine>
     </ExtraSettings>
     <CodeAnalyzerSettings>
       <Enabled>false</Enabled>
     </CodeAnalyzerSettings>
   </CodeSense>
+  <Configurations />
+  <ProgramArgumentsSuggestions />
   <Debug xsi:type="com.visualgdb.debug.remote">
     <AdditionalStartupCommands />
     <AdditionalGDBSettings>
@@ -90,7 +104,7 @@
       <DisableDisassembly>false</DisableDisassembly>
       <ExamineMemoryWithXCommand>false</ExamineMemoryWithXCommand>
       <StepIntoNewInstanceEntry>main</StepIntoNewInstanceEntry>
-      <ExamineRegistersInRawFormat>true</ExamineRegistersInRawFormat>
+      <ExamineRegistersInRawFormat>false</ExamineRegistersInRawFormat>
       <DisableSignals>false</DisableSignals>
       <EnableAsyncExecutionMode>false</EnableAsyncExecutionMode>
       <EnableNonStopMode>false</EnableNonStopMode>
@@ -108,11 +122,11 @@
     <DeploymentTargetPath>/tmp/$(TargetFileName)</DeploymentTargetPath>
     <X11WindowMode>Local</X11WindowMode>
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
-    <RunGDBUnderSudo>false</RunGDBUnderSudo>
+    <RunGDBUnderSudo>true</RunGDBUnderSudo>
     <DeploymentMode>Auto</DeploymentMode>
     <DeployWhenLaunchedWithoutDebugging>true</DeployWhenLaunchedWithoutDebugging>
     <StripDebugSymbolsDuringDeployment>false</StripDebugSymbolsDuringDeployment>
     <SuppressTTYCreation>false</SuppressTTYCreation>
-    <IndexDebugSymbols>false</IndexDebugSymbols>
+    <IndexDebugSymbols>true</IndexDebugSymbols>
   </Debug>
 </VisualGDBProjectSettings2>

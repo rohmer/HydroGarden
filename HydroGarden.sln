@@ -37,6 +37,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lvgl", "External\lvgl-dev\l
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lvgldrivers", "External\lv_drivers-master\lvgldrivers\lvgldrivers.vcxproj", "{12FC350C-20F7-420C-8B75-EF8920AB4B3F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Discovery", "Discovery\Discovery.vcxproj", "{12E255AB-46D4-4697-9685-684565C7FD4B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libpupnp", "External\pupnp-master\libpupnp\libpupnp.vcxproj", "{5BC897B7-0A39-4F62-986E-306C708B29C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,7 +123,6 @@ Global
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.Release|Any CPU.ActiveCfg = Release|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
-		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.Release|VisualGDB.Build.0 = Release|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.RelWithDebInfo|Any CPU.ActiveCfg = Release|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.RelWithDebInfo|Any CPU.Build.0 = Release|VisualGDB
 		{FB365DA3-8ACC-43FF-BCDC-79A6A1D78006}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
@@ -244,6 +247,34 @@ Global
 		{12FC350C-20F7-420C-8B75-EF8920AB4B3F}.RelWithDebInfo|Any CPU.Build.0 = Release|VisualGDB
 		{12FC350C-20F7-420C-8B75-EF8920AB4B3F}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{12FC350C-20F7-420C-8B75-EF8920AB4B3F}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.MinSizeRel|Any CPU.Build.0 = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.Release|Any CPU.ActiveCfg = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.RelWithDebInfo|Any CPU.ActiveCfg = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.RelWithDebInfo|Any CPU.Build.0 = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{12E255AB-46D4-4697-9685-684565C7FD4B}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.MinSizeRel|Any CPU.Build.0 = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.Release|Any CPU.ActiveCfg = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.RelWithDebInfo|Any CPU.ActiveCfg = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.RelWithDebInfo|Any CPU.Build.0 = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{5BC897B7-0A39-4F62-986E-306C708B29C0}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -263,6 +294,7 @@ Global
 		{30850577-DECF-45EC-9B32-43452BED2BA8} = {615E2A77-7A43-4EC9-82BA-904833CEF007}
 		{E0B27AC8-4036-46E1-AAB4-CC4177AF88BB} = {30850577-DECF-45EC-9B32-43452BED2BA8}
 		{12FC350C-20F7-420C-8B75-EF8920AB4B3F} = {30850577-DECF-45EC-9B32-43452BED2BA8}
+		{5BC897B7-0A39-4F62-986E-306C708B29C0} = {615E2A77-7A43-4EC9-82BA-904833CEF007}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54459A25-80DB-4E6C-BA50-BE2AC6F773E0}

@@ -1,6 +1,7 @@
 #include "Settings.h"
 
 Settings *Settings::instance = nullptr;
+std::mutex locker;
 
 Settings::Settings()
 {
@@ -23,8 +24,17 @@ Settings::Settings()
 
 Settings* Settings::GetInstance()
 {
-	if (instance == nullptr)
+	locker.lock();
+	try
+	{
+		if (instance == nullptr)
+			instance = new Settings();
+	}
+	catch (const std::exception &)
+	{
 		instance = new Settings();
+	}
+	locker.unlock();
 	return instance;
 }
 
@@ -90,6 +100,7 @@ std::string Settings::ToJSON()
 		nj["isDefault"] = it->second.isDefault;
 		json["settings"]["networks"][i] = nj;
 	}
+	json["settings"]["hostname"] = hostname;
 	std::stringstream ss;
 	
 	ss << json;	
@@ -187,6 +198,16 @@ bool Settings::LoadSettings()
 				}
 			}
 		}
+		if (settings.contains("hostname"))
+		{
+			hostname = settings["hostname"];
+		}
+		else
+		{
+			char cHost[1024];
+			gethostname(cHost, 1024);	
+			hostname = cHost;			
+		}
 	}
 	catch (const std::exception&)
 	{
@@ -233,6 +254,8 @@ sNetwork Settings::GetNetwork(std::string ssid)
 std::vector<sNetwork> Settings::GetNetworks()
 {
 	std::vector<sNetwork> ret;
+	if (networks.size() == 0)
+		return ret;
 	for (std::map<std::string, sNetwork>::iterator it = networks.begin(); it != networks.end(); it++)
 		ret.push_back(it->second);
 	return ret;

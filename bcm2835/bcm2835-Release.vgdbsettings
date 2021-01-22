@@ -27,12 +27,13 @@
       <Version>
         <GCC>8.3.0</GCC>
         <GDB>8.2.1</GDB>
-        <Revision>2</Revision>
+        <Revision>3</Revision>
       </Version>
     </ToolchainID>
     <ProjectFile>bcm2835.vcxproj</ProjectFile>
     <ParallelJobCount>0</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
+    <BuildAsRoot>false</BuildAsRoot>
   </Build>
   <CustomBuild>
     <PreSyncActions />
@@ -52,6 +53,7 @@
     <ShowMessageAfterExecuting>true</ShowMessageAfterExecuting>
   </CustomShortcuts>
   <UserDefinedVariables />
+  <ImportedPropertySheets />
   <CodeSense>
     <Enabled>Unknown</Enabled>
     <ExtraSettings>
@@ -64,6 +66,8 @@
       <Enabled>false</Enabled>
     </CodeAnalyzerSettings>
   </CodeSense>
+  <Configurations />
+  <ProgramArgumentsSuggestions />
   <Debug xsi:type="com.visualgdb.debug.remote">
     <AdditionalStartupCommands />
     <AdditionalGDBSettings>

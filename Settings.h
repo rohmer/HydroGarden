@@ -2,9 +2,12 @@
 
 #include <ctime>
 #include <fstream>
+#include <iostream>
 #include <map>
+#include <mutex>
 #include <sstream>
 #include <string>
+#include <thread>
 #include <vector>
 #include <unistd.h>
 
@@ -13,6 +16,10 @@
 #include "Logger.h"
 
 #define MLPSEC 1.083
+
+// If the below is defined, we will send the network password as clear text on a get for each wireless network
+// Clearly not super secure
+#define NETWORKPASS_CLEARTEXT 1
 
 struct sNetwork
 {
