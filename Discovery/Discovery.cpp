@@ -38,6 +38,24 @@ Pistache::Rest::Route::Result Discovery::getSettings(const Pistache::Rest::Reque
 
 Pistache::Rest::Route::Result Discovery::setSettings(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response)
 {
+	std::string body = request.body();
+	nlohmann::json json;
+	
+	try 
+	{
+		json = json.parse(body);
+	}
+	catch (std::exception)
+	{
+		return Pistache::Rest::Route::Result::Failure;
+	}
+	if (!json.contains("settings"))
+		return Pistache::Rest::Route::Result::Failure;
+	nlohmann::json set = json["settings"];
+	for (nlohmann::json::iterator it = settings.begin(); it != settings.end(); it++)
+	{
+		
+	}
 }
 	
 void Discovery::AddEndpoint(Endpoint endpoint,
@@ -52,7 +70,7 @@ void Discovery::AddEndpoint(Endpoint endpoint,
 	}
 	if (endpoint.endpointMethod == Endpoint::BOTH || endpoint.endpointMethod == Endpoint::PUT)
 	{
-		Pistache::Rest::Routes::Put(*router, endpoint.endpointPath, endpointFunction);
+		Pistache::Rest::Routes::Post(*router, endpoint.endpointPath, endpointFunction);
 	}
 }
 

@@ -274,6 +274,9 @@
     <ProjectReference Include="External\pistache-master\pistache\pistache.vcxproj">
       <Project>{66c55411-6a3b-464c-8303-2767b2e36e61}</Project>
     </ProjectReference>
+    <ProjectReference Include="External\pupnp-master\libpupnp\libpupnp.vcxproj">
+      <Project>{5bc897b7-0a39-4f62-986e-306c708b29c0}</Project>
+    </ProjectReference>
     <ProjectReference Include="InstallLib\AddPkgFile\AddPkgFile.vcxproj">
       <Project>{bd313634-af8a-43a7-81c5-7ad0c3785229}</Project>
     </ProjectReference>
