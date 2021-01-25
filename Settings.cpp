@@ -38,6 +38,21 @@ Settings* Settings::GetInstance()
 	return instance;
 }
 
+void Settings::SetLightDuration(uint duration)
+{
+	lightDuration = duration;
+}
+
+void Settings::SetLightStartHour(uint hour)
+{
+	lightStartHour = hour;
+}
+	
+void Settings::SetLightStartMinute(uint minute)
+{
+	lightStartMin = minute;
+}
+	
 void Settings::SetLightTime(uint startHour, uint startMin, uint duration)
 {
 	lightStartHour = startHour;

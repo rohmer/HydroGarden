@@ -52,12 +52,90 @@ Pistache::Rest::Route::Result Discovery::setSettings(const Pistache::Rest::Reque
 	if (!json.contains("settings"))
 		return Pistache::Rest::Route::Result::Failure;
 	nlohmann::json set = json["settings"];
-	for (nlohmann::json::iterator it = settings.begin(); it != settings.end(); it++)
-	{
-		
+	std::map<std::string, Setting> lSettings;
+	for (auto &setting : set)
+	{	
+		try
+		{
+			Setting pset = Setting::FromJSON(setting);
+			if(pset.SettingName()!="")
+				lSettings.emplace(pset.SettingName(), pset);
+		}
+		catch (const std::exception&)
+		{
+			//TODO: Figure out how to deal with errors in lib
+			// eat it for now
+		}
 	}
-}
 	
+	struct sSetResult
+	{
+		sSetResult(std::string name, std::string result, bool valSet)
+			: settingName(name)
+			, disposition(result)
+			, valueSet(valSet)
+		{
+		}
+		std::string settingName;
+		std::string disposition;
+		bool valueSet;
+	};
+	std::vector<sSetResult> results;
+	std::map<std::string, Setting> settingsToSet;
+	
+	for (std::map<std::string, Setting>::iterator it = lSettings.begin(); it != lSettings.end(); it++)
+	{
+		Setting s = it->second;
+		std::string name = it->first;
+		if (s.IsReadOnly())
+		{
+			results.push_back(sSetResult(s.SettingName(), "Read Only", false));
+		}
+		else
+		{
+			if (s.IsValidValue())
+			{
+				bool validType = false;
+				for (std::map<std::string,Setting>::iterator iter=settings.begin(); iter!=settings.end(); iter++)
+				{
+					if (iter->first == name)
+					{
+						if (s.SettingType() == iter->second.SettingType())
+							validType = true;
+						break;
+					}
+				}
+				if (validType)
+				{
+					settingsToSet.emplace(s.SettingName(), s);
+					results.push_back(sSetResult(s.SettingName(), "Value set", true));
+				}
+				else
+				{
+					results.push_back(sSetResult(s.SettingName(), "Type Mismatch", false));
+				}
+			}
+			else
+			{
+				std::stringstream ss;
+				ss << "Value: " << s.GetStrVal() << " outside minimum/maximun values";
+				results.push_back(sSetResult(s.SettingName(), ss.str(), false));
+			}			
+		}
+	}
+	
+	settingSetter(settingsToSet);
+	std::stringstream rJson;
+	rJson << "{\"results\": [";
+	for(std::vector<sSetResult>::iterator it = results.begin() ; it != results.end() ; it++)
+	{
+		rJson << "\"" << it->settingName << "\": {\"result\":\"" << it->disposition << "\"valueSet\":" << it->valueSet << "},";
+	}
+	rJson << "]}";
+	response.send(Pistache::Http::Code::Ok, rJson.str());
+	return Pistache::Rest::Route::Result::Ok;
+}
+
 void Discovery::AddEndpoint(Endpoint endpoint,
 	std::function<Pistache::Rest::Route::Result(const Pistache::Rest::Request &req, Pistache::Http::ResponseWriter response)> endpointFunction)
 {

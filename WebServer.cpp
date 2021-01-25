@@ -393,6 +393,55 @@ void WebServer::update(const Rest::Request &req, Http::ResponseWriter response)
 */
 std::map<std::string, bool> WebServer::setSettings(std::map<std::string, Setting> settings)
 {
+	std::vector<sNetwork> networks;
+	for (int i = 0; i < 5; i++)
+		networks.push_back(sNetwork());
+	
+	for (std::map<std::string, Setting>::iterator it = settings.begin(); it != settings.end(); it++)
+	{
+		if (it->first == "lightStartHour")
+			Settings::GetInstance()->SetLightStartHour(it->second.GetIntVal());
+		if (it->first == "lightStartMin")
+			Settings::GetInstance()->SetLightStartMinute(it->second.GetIntVal());
+		if (it->first == "lightDuration")
+			Settings::GetInstance()->SetLightDuration(it->second.GetIntVal());
+		if (it->first == "pumpDuration")
+			Settings::GetInstance()->SetPumpRunTime(it->second.GetIntVal());
+		if (it->first == "hostname")
+			Settings::GetInstance()->SetHostname(it->second.GetStrVal());
+		if (it->first == "dailyMLFood")
+			Settings::GetInstance()->SetDailyMLFood(it->second.GetFloatVal());
+		for (int i = 1; i <= 5; i++)
+		{
+			std::stringstream s1, s2, s3;
+			s1 << "networkSSID" << i;
+			s2 << "networkPassword" << i;
+			s3 << "networkDefault" << i;
+			
+			if (it->first == s1.str())
+			{
+				networks[i].ssid = it->second.GetStrVal();
+			} 
+			if (it->first == s2.str())
+			{
+				networks[i].password = it->second.GetStrVal(); 
+			}
+			if (it->first == s3.str())
+			{
+				networks[i].isDefault = it->second.GetBoolVal();
+			}
+		}
+		
+		if (networks.size() > 0)
+		{
+			Settings::GetInstance()->ClearNetworks();
+			for (int i = 0; i < networks.size(); i++)
+			{
+				Settings::GetInstance()->AddNetwork(networks[i].ssid, networks[i].password, networks[i].isDefault);
+			}
+				
+		}
+	}
 }
 	
 std::map<std::string, Setting> WebServer::getSettings(std::map<std::string, Setting> settings)

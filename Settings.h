@@ -50,6 +50,10 @@ public:
 	float DailyMLFood() { return dailyMLFood; } 
 	
 	void SetLightTime(uint startHour, uint startMin, uint duration);
+	void SetLightStartHour(uint startHour);
+	void SetLightStartMinute(uint startMinute);
+	void SetLightDuration(uint duration);
+	
 	void SetPumpRunTime(uint runTimeSec);
 	void SetDailyMLFood(float MLOfFood);
 		
@@ -64,7 +68,9 @@ public:
 	void AddNetwork(std::string ssid, std::string password, bool isDefault);
 	sNetwork GetNetwork(std::string ssid);
 	std::vector<sNetwork> GetNetworks();
+	void ClearNetworks() { networks.clear(); }
 	
 	std::string GetHostname();
+	
 	void SetHostname(std::string hostname);
 };

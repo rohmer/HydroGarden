@@ -17,15 +17,6 @@ public:
 		eFLOAT, 
 		eLIST
 	};
-	NLOHMANN_JSON_SERIALIZE_ENUM( eSettingType,
-		{
-			{ eSTR, "STRING" },
-			{eINT, "INT"},	
-			{eBOOL,"BOOL"},
-			{eFLOAT, "FLOAT"},
-			{eLIST,"LIST"}
-		}
-	);
 	Setting() {}
 	
 	Setting(
@@ -66,13 +57,11 @@ public:
 
 	nlohmann::json ToJSON();
 	static Setting FromJSON(std::string jsonStr);
+	static Setting FromJSON(nlohmann::json json);
 	
 	bool IsReadOnly() { return readOnly; }
 	eSettingType SettingType() { return settingType; }
-	std::string SettingSVal()
-	{ 
-		return settingValue;
-	}
+
 	std::vector<std::string> SettingListItems()
 	{
 		return settingListItems;
@@ -141,6 +130,13 @@ public:
 		settingListItems.push_back(listItem);
 	}
 	
+	bool GetBoolVal();
+	int GetIntVal();
+	float GetFloatVal();
+	std::string GetStrVal();
+	std::string GetListVal();
+	
+	bool IsValidValue();
 	
 private:		
 	bool readOnly;

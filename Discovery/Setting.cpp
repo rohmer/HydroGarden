@@ -95,7 +95,26 @@ nlohmann::json Setting::ToJSON()
 	json["setting"]["name"] = settingName.c_str();
 	json["setting"]["desc"] = settingDescription.c_str();
 	json["setting"]["value"] = settingValue.c_str();
-	json["setting"]["type"] = settingType;
+	std::string st;
+	switch (settingType)
+	{
+	case Setting::eSTR:
+		st = "STRING";
+		break;
+	case Setting::eFLOAT:
+		st = "FLOAT";
+		break;
+	case Setting::eINT:
+		st = "INT";
+		break;
+	case Setting::eBOOL:
+		st = "BOOL";
+		break;
+	case Setting::eLIST:
+		st = "LIST";
+		break;
+	}
+	json["setting"]["type"] = st;
 	json["setting"]["readOnly"] = readOnly;
 	if (settingType == Setting::eLIST)
 	{
@@ -117,6 +136,11 @@ nlohmann::json Setting::ToJSON()
 
 	return json;
 
+}
+
+Setting Setting::FromJSON(nlohmann::json json)
+{
+	return FromJSON(json.dump());
 }
 	
 Setting Setting::FromJSON(std::string jsonStr)
@@ -181,4 +205,91 @@ Setting Setting::FromJSON(std::string jsonStr)
 	}
 	
 	return setting;
+}
+
+std::string Setting::GetStrVal()
+{
+	return settingValue;
+}
+
+bool Setting::GetBoolVal()
+{
+	if (settingValue == "1")
+		return true;
+	return false;
+}
+
+int Setting::GetIntVal()
+{
+	try
+	{
+		int i = std::atoi(settingValue.c_str());
+		return i;
+	} 
+	catch (std::exception)
+	{
+		return 0;
+	}
+}
+
+float Setting::GetFloatVal()
+{
+	try
+	{
+		float f = std::atof(settingValue.c_str());
+		return f;
+	}
+	catch (const std::exception&)
+	{
+		return 0.0f;		
+	}
+}
+	
+std::string Setting::GetListVal()
+{
+	int i = GetIntVal();
+	if (i<0 || i>settingListItems.size() - 1)
+		return "";
+	return settingListItems[i];
+}
+	
+bool Setting::IsValidValue()
+{
+	if (readOnly)
+		return true;
+	switch (settingType)
+	{
+	case Setting::eSTR:
+		return true;
+		break;
+	case Setting::eINT:
+		{
+			int i = GetIntVal();
+			if (i<iMin || i>iMax)
+				return false;
+			return true;
+			break;
+		}
+	case Setting::eBOOL:
+		return true;
+		break;
+	case Setting::eFLOAT:
+		{
+			float f = GetFloatVal();
+			if (f<fMin || f>fMax)
+				return false;
+		
+			return true;
+		}
+		break;
+	case Setting::eLIST:
+		{
+			std::string l = GetListVal();
+			if (l == "")
+				return false;
+		
+			return true;
+		}
+		break;
+	}
 }
