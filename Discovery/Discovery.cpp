@@ -1,10 +1,18 @@
 #include "Discovery.h"
 
 Discovery::Discovery(
+		int discoveryPort,
+		int applicationID,
+		bool canBeDiscovered,
+		bool canDiscover,
+		std::string appName,
+		nlohmann::json appVersion,
 		Pistache::Rest::Router *eprouter,
 		std::function<std::map<std::string, Setting>(std::map<std::string,Setting>)> settingGetFunction,
 		std::function<std::map<std::string, bool>(std::map<std::string,Setting>)> settingSetFunction
 	) :
+	appName(appName),
+	appVersion(appVersion),
 	router(eprouter),
 	settingGetter(settingGetFunction),
 	settingSetter(settingSetFunction)
@@ -17,11 +25,43 @@ Discovery::Discovery(
 		std::bind(&Discovery::getSettings, this, placeholders::_1, placeholders::_2)
 	);
 	if (settingSetter != nullptr)
-		AddEndpoint(Endpoint("/settings", Endpoint::PUT), 
+		AddEndpoint(Endpoint("/settings", Endpoint::POST), 
 		std::bind(&Discovery::setSettings, this, placeholders::_1, placeholders::_2)
 	);
+	if (canBeDiscovered || canDiscover)
+	{
+		initDiscovery(discoveryPort, applicationID, canBeDiscovered, canDiscover);
+	}
 }
 
+void Discovery::initDiscovery(int port, int appId, bool canBeDiscovered, bool canDiscover)
+{
+	udpdiscovery::PeerParameters parameters;
+	parameters.set_port(port);
+	parameters.set_application_id(appId);
+	parameters.set_can_be_discovered(canBeDiscovered);
+	parameters.set_can_discover(canDiscover);
+	peer.Start(parameters, toJSON().dump());
+}
+
+nlohmann::json Discovery::DiscoverPeers()
+{
+	std::list<udpdiscovery::DiscoveredPeer> new_discovered_peers = peer.ListDiscovered();
+	nlohmann::json json;
+	for (std::list<udpdiscovery::DiscoveredPeer>::iterator it = new_discovered_peers.begin(); it != new_discovered_peers.end(); it++)
+	{
+		try
+		{
+			json["peers"].push_back(nlohmann::json::parse(it->user_data()));
+		}
+		catch (const std::exception&)
+		{
+		}
+	}
+	
+	return json;
+}
+	
 Pistache::Rest::Route::Result Discovery::getSettings(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response)
 {
 	std::map<std::string, Setting> settingValues = settingGetter(settings);
@@ -146,7 +186,7 @@ void Discovery::AddEndpoint(Endpoint endpoint,
 	{
 		Pistache::Rest::Routes::Get(*router, endpoint.endpointPath, endpointFunction);
 	}
-	if (endpoint.endpointMethod == Endpoint::BOTH || endpoint.endpointMethod == Endpoint::PUT)
+	if (endpoint.endpointMethod == Endpoint::BOTH || endpoint.endpointMethod == Endpoint::POST)
 	{
 		Pistache::Rest::Routes::Post(*router, endpoint.endpointPath, endpointFunction);
 	}
@@ -162,6 +202,9 @@ Pistache::Rest::Route::Result Discovery::discovery(const Pistache::Rest::Request
 nlohmann::json Discovery::toJSON()
 {
 	nlohmann::json json;
+	json["app"]["name"] = appName;
+	std::string foo = appVersion.dump();
+	json["app"] = appVersion;
 	json["endpoints"] = nlohmann::json::array();
 	json["settings"] = nlohmann::json::array();
 	int epSize = endpoints.size();

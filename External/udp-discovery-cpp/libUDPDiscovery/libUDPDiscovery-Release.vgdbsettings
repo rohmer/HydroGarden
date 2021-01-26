@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <VisualGDBProjectSettings2 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ConfigurationName>Debug</ConfigurationName>
+  <ConfigurationName>Release</ConfigurationName>
   <Project xsi:type="com.visualgdb.project.linux">
     <CustomSourceDirectories>
       <Directories />
@@ -13,28 +13,6 @@
       <Transport>SSH</Transport>
       <UserName>pi</UserName>
     </DeploymentHost>
-    <MainSourceTransferCommand>
-      <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-      <LocalDirectory>$(ProjectDir)</LocalDirectory>
-      <RemoteDirectory>/tmp/VisualGDB/$(ProjectDirUnixStyle)</RemoteDirectory>
-      <FileMasks>
-        <string>*.cpp</string>
-        <string>*.h</string>
-        <string>*.hpp</string>
-        <string>*.c</string>
-        <string>*.cc</string>
-        <string>*.cxx</string>
-        <string>*.mak</string>
-        <string>Makefile</string>
-        <string>*.txt</string>
-        <string>*.cmake</string>
-      </FileMasks>
-      <TransferNewFilesOnly>true</TransferNewFilesOnly>
-      <IncludeSubdirectories>true</IncludeSubdirectories>
-      <SelectedDirectories />
-      <DeleteDisappearedFiles>false</DeleteDisappearedFiles>
-      <ApplyGlobalExclusionList>true</ApplyGlobalExclusionList>
-    </MainSourceTransferCommand>
     <AllowChangingHostForMainCommands>false</AllowChangingHostForMainCommands>
     <SkipBuildIfNoSourceFilesChanged>false</SkipBuildIfNoSourceFilesChanged>
     <IgnoreFileTransferErrors>false</IgnoreFileTransferErrors>
@@ -52,28 +30,14 @@
         <Revision>3</Revision>
       </Version>
     </ToolchainID>
-    <ProjectFile>HydroGarden.vcxproj</ProjectFile>
-    <RemoteBuildEnvironment>
-      <Records />
-    </RemoteBuildEnvironment>
-    <ParallelJobCount>1</ParallelJobCount>
+    <ProjectFile>libUDPDiscovery.vcxproj</ProjectFile>
+    <ParallelJobCount>0</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
     <BuildAsRoot>false</BuildAsRoot>
   </Build>
   <CustomBuild>
     <PreSyncActions />
-    <PreBuildActions>
-      <CustomActionBase xsi:type="CommandLineAction">
-        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-        <RemoteHost>
-          <HostName>BuildMachine</HostName>
-          <Transport>BuiltinShortcut</Transport>
-        </RemoteHost>
-        <Command>$(BuildDir)\Build\incVer.bat</Command>
-        <WorkingDirectory>$(BuildDir)\Build</WorkingDirectory>
-        <BackgroundMode>false</BackgroundMode>
-      </CustomActionBase>
-    </PreBuildActions>
+    <PreBuildActions />
     <PostBuildActions />
     <PreCleanActions />
     <PostCleanActions />
@@ -89,7 +53,6 @@
     <ShowMessageAfterExecuting>true</ShowMessageAfterExecuting>
   </CustomShortcuts>
   <UserDefinedVariables />
-  <ImportedPropertySheets />
   <CodeSense>
     <Enabled>Unknown</Enabled>
     <ExtraSettings>
@@ -102,21 +65,19 @@
       <Enabled>false</Enabled>
     </CodeAnalyzerSettings>
   </CodeSense>
-  <Configurations />
-  <ProgramArgumentsSuggestions />
   <Debug xsi:type="com.visualgdb.debug.remote">
     <AdditionalStartupCommands />
     <AdditionalGDBSettings>
       <Features>
         <DisableAutoDetection>false</DisableAutoDetection>
-        <UseFrameParameter>true</UseFrameParameter>
-        <SimpleValuesFlagSupported>true</SimpleValuesFlagSupported>
-        <ListLocalsSupported>true</ListLocalsSupported>
-        <ByteLevelMemoryCommandsAvailable>true</ByteLevelMemoryCommandsAvailable>
-        <ThreadInfoSupported>true</ThreadInfoSupported>
-        <PendingBreakpointsSupported>true</PendingBreakpointsSupported>
-        <SupportTargetCommand>true</SupportTargetCommand>
-        <ReliableBreakpointNotifications>true</ReliableBreakpointNotifications>
+        <UseFrameParameter>false</UseFrameParameter>
+        <SimpleValuesFlagSupported>false</SimpleValuesFlagSupported>
+        <ListLocalsSupported>false</ListLocalsSupported>
+        <ByteLevelMemoryCommandsAvailable>false</ByteLevelMemoryCommandsAvailable>
+        <ThreadInfoSupported>false</ThreadInfoSupported>
+        <PendingBreakpointsSupported>false</PendingBreakpointsSupported>
+        <SupportTargetCommand>false</SupportTargetCommand>
+        <ReliableBreakpointNotifications>false</ReliableBreakpointNotifications>
       </Features>
       <EnableSmartStepping>false</EnableSmartStepping>
       <FilterSpuriousStoppedNotifications>false</FilterSpuriousStoppedNotifications>
@@ -148,12 +109,11 @@
     <DeploymentTargetPath>/tmp/$(TargetFileName)</DeploymentTargetPath>
     <X11WindowMode>Local</X11WindowMode>
     <KeepConsoleAfterExit>false</KeepConsoleAfterExit>
-    <RunGDBUnderSudo>true</RunGDBUnderSudo>
+    <RunGDBUnderSudo>false</RunGDBUnderSudo>
     <DeploymentMode>Auto</DeploymentMode>
-    <LdLibraryPath>/usr/local:/usr/local/lib</LdLibraryPath>
     <DeployWhenLaunchedWithoutDebugging>true</DeployWhenLaunchedWithoutDebugging>
     <StripDebugSymbolsDuringDeployment>false</StripDebugSymbolsDuringDeployment>
     <SuppressTTYCreation>false</SuppressTTYCreation>
-    <IndexDebugSymbols>true</IndexDebugSymbols>
+    <IndexDebugSymbols>false</IndexDebugSymbols>
   </Debug>
 </VisualGDBProjectSettings2>

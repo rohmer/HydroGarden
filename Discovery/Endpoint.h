@@ -11,13 +11,13 @@ public:
 	enum eEPMethod
 	{
 		GET,
-		PUT,
+		POST,
 		BOTH		
 	};
 	NLOHMANN_JSON_SERIALIZE_ENUM( eEPMethod,
 		{
 			{ GET, "GET" },
-			{ PUT, "PUT" },
+			{ POST, "POST" },
 			{ BOTH, "BOTH" }
 		});
 	

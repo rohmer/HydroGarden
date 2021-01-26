@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{12E255AB-46D4-4697-9685-684565C7FD4B}</ProjectGuid>
+    <ProjectGuid>{84D1713C-137F-437E-AFC7-5F082437AA73}</ProjectGuid>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
@@ -39,56 +39,39 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../External/JSON;../External/pistache-master/include;../External/udp-discovery-cpp;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions />
-      <CLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>pthread;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
-      <AdditionalOptions />
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../External/pistache-master/include;../External/JSON;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NDEBUG=1;RELEASE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions />
-      <CLanguageStandard />
     </ClCompile>
-    <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LinkerScript />
-      <AdditionalOptions />
-    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Discovery.cpp" />
-    <ClCompile Include="Endpoint.cpp" />
-    <ClCompile Include="Setting.cpp" />
+    <None Include="libUDPDiscovery-Debug.vgdbsettings" />
+    <None Include="libUDPDiscovery-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Discovery.h" />
-    <ClInclude Include="Endpoint.h" />
-    <ClInclude Include="Setting.h" />
+    <Text Include="..\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Discovery-Debug.vgdbsettings" />
-    <None Include="Discovery-Release.vgdbsettings" />
+    <ClCompile Include="..\udp_discovery_ip_port.cpp" />
+    <ClCompile Include="..\udp_discovery_peer.cpp" />
+    <ClCompile Include="..\udp_discovery_protocol.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\External\pistache-master\pistache\pistache.vcxproj">
-      <Project>{66c55411-6a3b-464c-8303-2767b2e36e61}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\External\udp-discovery-cpp\libUDPDiscovery\libUDPDiscovery.vcxproj">
-      <Project>{84d1713c-137f-437e-afc7-5f082437aa73}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\udp_discovery_discovered_peer.hpp" />
+    <ClInclude Include="..\udp_discovery_ip_port.hpp" />
+    <ClInclude Include="..\udp_discovery_peer.hpp" />
+    <ClInclude Include="..\udp_discovery_peer_parameters.hpp" />
+    <ClInclude Include="..\udp_discovery_protocol.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -339,25 +339,6 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-VisualGDB
-*.opensdf
-*.sdf
-*.suo
-*.old
-.vs
-**/CodeDB/
-**/.visualgdb/
-
-*.lck
-*.000
-*.001
-*.npa00
-*.lck
-Build/HydroGarden.pkg.tar.gz
-Build/HydroGarden.tar.gz
-bcm2835/.visualgdb/CodeDB/bcm2835-Debug-VisualGDB/codedb.lck
-*.gz
-*.npa00
-*.lck
-*.000
-*.001
+.visualgdb/
+*.00?
+*.tar.gz

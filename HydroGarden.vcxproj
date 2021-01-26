@@ -36,15 +36,15 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>External/lvgl-dev;.;External/lv_drivers-master;External/libhttpserver/src;=/usr/local/include;External/JSON;External/restinio-master/dev;External/pistache-master/include;External/wpa_supplicant-2.9/src/utils;External/wpa_supplicant-2.9/src;wpa;External/libwpa/wpa_cli_oper;External/libarchive/libarchive;External/PicoSHA2-master;InstallLib;External/libwpa/wpa_supplicant-2.6/wpa_supplicant;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>External/lvgl-dev;.;External/lv_drivers-master;External/libhttpserver/src;=/usr/local/include;External/JSON;External/restinio-master/dev;External/pistache-master/include;External/wpa_supplicant-2.9/src/utils;External/wpa_supplicant-2.9/src;wpa;External/libwpa/wpa_cli_oper;External/libarchive/libarchive;External/PicoSHA2-master;InstallLib;External/libwpa/wpa_supplicant-2.6/wpa_supplicant;External/udp-discovery-cpp;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_LVGL_H_INCLUDE_SIMPLE;CONFIG_CTRL_IFACE;CONFIG_CTRL_IFACE_UNIX;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>stdc++fs;pthread; mnl;expat;lzma;z;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
@@ -274,8 +274,8 @@
     <ProjectReference Include="External\pistache-master\pistache\pistache.vcxproj">
       <Project>{66c55411-6a3b-464c-8303-2767b2e36e61}</Project>
     </ProjectReference>
-    <ProjectReference Include="External\pupnp-master\libpupnp\libpupnp.vcxproj">
-      <Project>{5bc897b7-0a39-4f62-986e-306c708b29c0}</Project>
+    <ProjectReference Include="External\udp-discovery-cpp\libUDPDiscovery\libUDPDiscovery.vcxproj">
+      <Project>{84d1713c-137f-437e-afc7-5f082437aa73}</Project>
     </ProjectReference>
     <ProjectReference Include="InstallLib\AddPkgFile\AddPkgFile.vcxproj">
       <Project>{bd313634-af8a-43a7-81c5-7ad0c3785229}</Project>

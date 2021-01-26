@@ -2,11 +2,17 @@
 
 WebServer::WebServer(Address addr) :
 	httpEndpoint(std::make_shared<Http::Endpoint>(addr))
-{
+{	
 	auto opts = Http::Endpoint::options().threads(2);
 	httpEndpoint->init(opts);
 	router = new Rest::Router();
 	discovery = std::make_shared<Discovery>(
+		1973,
+		1,
+		true,
+		true,
+		"HydroGarden",
+		Version().ToJSON(),
 		router,
 		std::bind(&WebServer::getSettings, this, placeholders::_1),
 		std::bind(&WebServer::setSettings, this, placeholders::_1)
@@ -26,63 +32,14 @@ void WebServer::start()
 
 void WebServer::createRoutes()
 {
-	Rest::Routes::Get(*router, "/logs", Rest::Routes::bind(&WebServer::getLogs, this));
+	discovery->AddEndpoint(Endpoint("/logs", Endpoint::GET), Rest::Routes::bind(&WebServer::getLogs, this));
+	discovery->AddEndpoint(Endpoint("/logs/clear", Endpoint::GET), Rest::Routes::bind(&WebServer::clearLogs, this));	
+	discovery->AddEndpoint(Endpoint("/info", Endpoint::GET), Rest::Routes::bind(&WebServer::getInfo, this));
+	discovery->AddEndpoint(Endpoint("/states", Endpoint::GET), Rest::Routes::bind(&WebServer::getStates, this));	
+	discovery->AddEndpoint(Endpoint("/update", Endpoint::POST), Rest::Routes::bind(&WebServer::update, this));	
+	discovery->AddEndpoint(Endpoint("/update", Endpoint::GET), Rest::Routes::bind(&WebServer::updateStatic, this));
 }
-/*
-void WebServer::createDescription()
-{
-	desc
-		.info()
-	    .license("Apache", "http://www.apache.org/licenses/LICENSE-2.0");
 
-	auto backendErrorResponse =
-	    desc.response(Http::Code::Internal_Server_Error, "An error occured with the backend");
-
-	desc
-		.schemes(Rest::Scheme::Http)
-		.basePath("/v1")
-		.produces(MIME(Application, Json))
-		.consumes(MIME(Application, Json));
-
-	auto versionPath = desc.path("/v1");
-
-	desc
-		.route(desc.post("/update"))
-		.bind(&WebServer::update, this)
-		.produces(MIME(Application, Json), MIME(Application, Xml))
-		.response(Http::Code::Ok, "HydroGarden Update Processor");
-	desc
-		.route(desc.get("/update"))
-		.bind(&WebServer::updateStatic, this)
-		.produces(MIME(Text, Html))
-		.response(Http::Code::Ok, "HydroGarden Update");
-	
-	desc
-		.route(desc.get("/logs"))
-		.bind(&WebServer::getLogs, this)
-		.produces(MIME(Application, Json), MIME(Application, Xml))
-		.response(Http::Code::Ok, "HydroGarden Logs");
-	
-	desc
-		.route(desc.get("/logs/clear"))
-		.bind(&WebServer::clearLogs, this)
-		.produces(MIME(Application, Json), MIME(Application, Xml))
-		.response(Http::Code::Ok, "HydroGarden Clear Logs");
-	
-	desc
-		.route(desc.get("/states"))
-		.bind(&WebServer::getStates, this)
-		.produces(MIME(Application, Json), MIME(Application, Xml))
-		.response(Http::Code::Ok, "HydroGarden State Changes");
-	desc
-		.route(desc.get("/info"))
-		.bind(&WebServer::getInfo, this)
-		.produces(MIME(Application, Json), MIME(Application, Xml))
-		.response(Http::Code::Ok, "HydroGarden Info");
-	
-	//createSettings();
-}
-*/
 void WebServer::createSettings()
 {
 	discovery->AddSetting(
@@ -268,7 +225,7 @@ void WebServer::createSettings()
 		)
 	);
 }
-/*
+
 void WebServer::getStates(const Rest::Request &req, Http::ResponseWriter response)
 {
 	std::stringstream ss;
@@ -282,7 +239,6 @@ void WebServer::clearLogs(const Rest::Request &req, Http::ResponseWriter respons
 	Logger::GetInstance()->ClearLog();
 	response.send(Http::Code::Ok, "Logs Cleared");
 }
-*/
 
 void WebServer::getLogs(const Rest::Request &req, Http::ResponseWriter response)
 {
@@ -293,7 +249,7 @@ void WebServer::getLogs(const Rest::Request &req, Http::ResponseWriter response)
 	response.send(Http::Code::Ok, Logger::GetInstance()->ToJSON());
 }
 
-/*
+
 void WebServer::getInfo(const Rest::Request &req, Http::ResponseWriter response)
 {
 	response.send(Http::Code::Ok, Info::GetInfo());
@@ -390,7 +346,7 @@ void WebServer::update(const Rest::Request &req, Http::ResponseWriter response)
 			
 	}
 }
-*/
+
 std::map<std::string, bool> WebServer::setSettings(std::map<std::string, Setting> settings)
 {
 	std::vector<sNetwork> networks;
