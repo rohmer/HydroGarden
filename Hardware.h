@@ -25,10 +25,15 @@ public:
 	static bool FeedLevel();
 	static bool WaterLevel();
 	
+	static bool LightStatus();
+	static bool PumpStatus();
+	static bool FeedStatus();
+	
 private:
 	static bool init;
 	static void initialize();
 
+	static bool lightStatus, pumpStatus, feedStatus;
 public:
 
 };

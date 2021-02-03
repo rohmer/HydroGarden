@@ -108,7 +108,7 @@
     <LaunchGDBSettings xsi:type="GDBLaunchParametersNewInstance">
       <DebuggedProgram>$(TargetPath)</DebuggedProgram>
       <GDBServerPort>2000</GDBServerPort>
-      <ProgramArguments>-v 1.2.3 -n /tmp/AddPkgFile -d /usr/local/bin</ProgramArguments>
+      <ProgramArguments>-v 1.2.3 -w so -d /usr/local/bin</ProgramArguments>
       <ArgumentEscapingMode>Auto</ArgumentEscapingMode>
     </LaunchGDBSettings>
     <GenerateCtrlBreakInsteadOfCtrlC>false</GenerateCtrlBreakInsteadOfCtrlC>

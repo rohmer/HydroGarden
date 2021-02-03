@@ -49,6 +49,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HG Client", "HG Client", "{
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libUDPDiscovery", "External\udp-discovery-cpp\libUDPDiscovery\libUDPDiscovery.vcxproj", "{84D1713C-137F-437E-AFC7-5F082437AA73}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libLodePNG", "External\lodepng-master\libLodePNG\libLodePNG.vcxproj", "{0086ED4C-35C6-4181-B631-C6E175E73DFB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libbase64", "External\cpp-base64-master\libbase64\libbase64.vcxproj", "{A9F1836A-FF09-4A67-B111-2388DEE650A9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ImgJSON", "ImgJSON\ImgJSON.vcxproj", "{03FEF149-BE21-4085-B922-2A22453ACBDB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{D33EC4C5-9C70-458D-8C1E-BAE4D4C41C5D}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\BuildPkg.sh = scripts\BuildPkg.sh
+		scripts\transfer.cmd = scripts\transfer.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -579,6 +591,84 @@ Global
 		{84D1713C-137F-437E-AFC7-5F082437AA73}.RelWithDebInfo|iPhoneSimulator.Build.0 = Release|VisualGDB
 		{84D1713C-137F-437E-AFC7-5F082437AA73}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
 		{84D1713C-137F-437E-AFC7-5F082437AA73}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Debug|iPhone.ActiveCfg = Debug|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Debug|iPhoneSimulator.ActiveCfg = Debug|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.MinSizeRel|Any CPU.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.MinSizeRel|iPhone.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.MinSizeRel|iPhone.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.MinSizeRel|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.MinSizeRel|iPhoneSimulator.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Release|Any CPU.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Release|iPhone.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Release|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.RelWithDebInfo|Any CPU.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.RelWithDebInfo|Any CPU.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.RelWithDebInfo|iPhone.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.RelWithDebInfo|iPhone.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.RelWithDebInfo|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.RelWithDebInfo|iPhoneSimulator.Build.0 = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Debug|iPhone.ActiveCfg = Debug|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Debug|iPhoneSimulator.ActiveCfg = Debug|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.MinSizeRel|Any CPU.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.MinSizeRel|iPhone.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.MinSizeRel|iPhone.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.MinSizeRel|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.MinSizeRel|iPhoneSimulator.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Release|Any CPU.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Release|iPhone.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Release|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.RelWithDebInfo|Any CPU.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.RelWithDebInfo|Any CPU.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.RelWithDebInfo|iPhone.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.RelWithDebInfo|iPhone.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.RelWithDebInfo|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.RelWithDebInfo|iPhoneSimulator.Build.0 = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Debug|Any CPU.ActiveCfg = Debug|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Debug|iPhone.ActiveCfg = Debug|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Debug|iPhoneSimulator.ActiveCfg = Debug|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.MinSizeRel|Any CPU.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.MinSizeRel|Any CPU.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.MinSizeRel|iPhone.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.MinSizeRel|iPhone.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.MinSizeRel|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.MinSizeRel|iPhoneSimulator.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.MinSizeRel|VisualGDB.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.MinSizeRel|VisualGDB.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Release|Any CPU.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Release|iPhone.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Release|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.Release|VisualGDB.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.RelWithDebInfo|Any CPU.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.RelWithDebInfo|Any CPU.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.RelWithDebInfo|iPhone.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.RelWithDebInfo|iPhone.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.RelWithDebInfo|iPhoneSimulator.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.RelWithDebInfo|iPhoneSimulator.Build.0 = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.RelWithDebInfo|VisualGDB.ActiveCfg = Release|VisualGDB
+		{03FEF149-BE21-4085-B922-2A22453ACBDB}.RelWithDebInfo|VisualGDB.Build.0 = Release|VisualGDB
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -602,6 +692,8 @@ Global
 		{96C529E1-92EA-4C99-959D-E729878B25D5} = {2471D347-E4D4-4932-8D29-3DC720320CB7}
 		{C4D6E11C-32D7-47C1-802C-232BCD820F7A} = {2471D347-E4D4-4932-8D29-3DC720320CB7}
 		{84D1713C-137F-437E-AFC7-5F082437AA73} = {615E2A77-7A43-4EC9-82BA-904833CEF007}
+		{0086ED4C-35C6-4181-B631-C6E175E73DFB} = {615E2A77-7A43-4EC9-82BA-904833CEF007}
+		{A9F1836A-FF09-4A67-B111-2388DEE650A9} = {615E2A77-7A43-4EC9-82BA-904833CEF007}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54459A25-80DB-4E6C-BA50-BE2AC6F773E0}

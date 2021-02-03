@@ -661,4 +661,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="Hydro.png">
+      <Filter>Resource files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

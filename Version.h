@@ -15,7 +15,7 @@ public:
 	Version() :
 		major(VERSION_MAJOR),
 		minor(VERSION_MINOR),
-		build(VERSION_BUILD),
+		build(VERSION_RELEASE),
 		extended(VERSION_EXTEND)
 	{
 	}

@@ -36,15 +36,15 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>External/lvgl-dev;.;External/lv_drivers-master;External/libhttpserver/src;=/usr/local/include;External/JSON;External/restinio-master/dev;External/pistache-master/include;External/wpa_supplicant-2.9/src/utils;External/wpa_supplicant-2.9/src;wpa;External/libwpa/wpa_cli_oper;External/libarchive/libarchive;External/PicoSHA2-master;InstallLib;External/libwpa/wpa_supplicant-2.6/wpa_supplicant;External/udp-discovery-cpp;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>External/lvgl-dev;.;External/lv_drivers-master;External/libhttpserver/src;=/usr/local/include;External/JSON;External/restinio-master/dev;External/pistache-master/include;External/wpa_supplicant-2.9/src/utils;External/wpa_supplicant-2.9/src;wpa;External/libwpa/wpa_cli_oper;External/libarchive/libarchive;External/PicoSHA2-master;InstallLib;External/libwpa/wpa_supplicant-2.6/wpa_supplicant;External/udp-discovery-cpp;External/lodepng-master;ImgJSON;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_LVGL_H_INCLUDE_SIMPLE;CONFIG_CTRL_IFACE;CONFIG_CTRL_IFACE_UNIX;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
       <AdditionalLibraryNames>stdc++fs;pthread; mnl;expat;lzma;z;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
       <LinkerScript />
       <AdditionalOptions />
@@ -256,6 +256,9 @@
     <ProjectReference Include="Discovery\Discovery.vcxproj">
       <Project>{12e255ab-46d4-4697-9685-684565c7fd4b}</Project>
     </ProjectReference>
+    <ProjectReference Include="External\cpp-base64-master\libbase64\libbase64.vcxproj">
+      <Project>{a9f1836a-ff09-4a67-b111-2388dee650a9}</Project>
+    </ProjectReference>
     <ProjectReference Include="External\libarchive\libarchive\libarchive.vcxproj">
       <Project>{1df41516-8cf7-4e3e-bba3-138f027a82b3}</Project>
     </ProjectReference>
@@ -264,6 +267,9 @@
     </ProjectReference>
     <ProjectReference Include="External\libwpa\libwpa.vcxproj">
       <Project>{f4b46f02-e818-40bc-829c-1dbca8da16ff}</Project>
+    </ProjectReference>
+    <ProjectReference Include="External\lodepng-master\libLodePNG\libLodePNG.vcxproj">
+      <Project>{0086ed4c-35c6-4181-b631-c6e175e73dfb}</Project>
     </ProjectReference>
     <ProjectReference Include="External\lvgl-dev\lvgl\lvgl.vcxproj">
       <Project>{e0b27ac8-4036-46e1-aab4-cc4177af88bb}</Project>
@@ -277,6 +283,9 @@
     <ProjectReference Include="External\udp-discovery-cpp\libUDPDiscovery\libUDPDiscovery.vcxproj">
       <Project>{84d1713c-137f-437e-afc7-5f082437aa73}</Project>
     </ProjectReference>
+    <ProjectReference Include="ImgJSON\ImgJSON.vcxproj">
+      <Project>{03fef149-be21-4085-b922-2a22453acbdb}</Project>
+    </ProjectReference>
     <ProjectReference Include="InstallLib\AddPkgFile\AddPkgFile.vcxproj">
       <Project>{bd313634-af8a-43a7-81c5-7ad0c3785229}</Project>
     </ProjectReference>
@@ -289,6 +298,11 @@
     <ProjectReference Include="InstallLib\InstallLib.vcxproj">
       <Project>{f20dced5-681e-46b6-a869-c85d23ec982f}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Hydro.png">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,9 @@
 #include "Hardware.h"
 
 bool Hardware::init = false;
+bool Hardware::lightStatus = false;
+bool Hardware::pumpStatus = false;
+bool Hardware::feedStatus = false;
 
 void Hardware::initialize()
 {
@@ -26,6 +29,21 @@ void Hardware::initialize()
 	bcm2835_gpio_write(LIGHTPIN, LOW);
 	init = true;
 	LOGI("Hardware Init");
+}
+
+bool Hardware::LightStatus()
+{
+	return lightStatus;
+}
+
+bool Hardware::PumpStatus()
+{
+	return lightStatus;
+}
+
+bool Hardware::FeedStatus()
+{
+	return lightStatus;
 }
 
 void Hardware::LightsOn()

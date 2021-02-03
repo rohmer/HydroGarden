@@ -39,15 +39,15 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <CPPLanguageStandard>CPP1Z</CPPLanguageStandard>
-      <AdditionalIncludeDirectories>../External/JSON;../External/pistache-master/include;../External/udp-discovery-cpp;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../External/JSON;../External/pistache-master/include;../External/udp-discovery-cpp;../External/pistache-master/include/pistache;../ImgJSON;../External/lodepng-master;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;LV_CONF_INCLUDE_SIMPLE;LV_LVGL_H_INCLUDE_SIMPLE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <LinkerScript />
       <AdditionalOptions />
     </Link>
@@ -72,22 +72,36 @@
     <ClCompile Include="Discovery.cpp" />
     <ClCompile Include="Endpoint.cpp" />
     <ClCompile Include="Setting.cpp" />
+    <ClCompile Include="SettingGroup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Discovery.h" />
     <ClInclude Include="Endpoint.h" />
     <ClInclude Include="Setting.h" />
+    <ClInclude Include="SettingGroup.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Discovery-Debug.vgdbsettings" />
     <None Include="Discovery-Release.vgdbsettings" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\External\cpp-base64-master\libbase64\libbase64.vcxproj">
+      <Project>{a9f1836a-ff09-4a67-b111-2388dee650a9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\External\lodepng-master\libLodePNG\libLodePNG.vcxproj">
+      <Project>{0086ed4c-35c6-4181-b631-c6e175e73dfb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\External\lvgl-dev\lvgl\lvgl.vcxproj">
+      <Project>{e0b27ac8-4036-46e1-aab4-cc4177af88bb}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\External\pistache-master\pistache\pistache.vcxproj">
       <Project>{66c55411-6a3b-464c-8303-2767b2e36e61}</Project>
     </ProjectReference>
     <ProjectReference Include="..\External\udp-discovery-cpp\libUDPDiscovery\libUDPDiscovery.vcxproj">
       <Project>{84d1713c-137f-437e-afc7-5f082437aa73}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\ImgJSON\ImgJSON.vcxproj">
+      <Project>{03fef149-be21-4085-b922-2a22453acbdb}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -55,6 +55,7 @@
     <ProjectFile>HydroGarden.vcxproj</ProjectFile>
     <RemoteBuildEnvironment>
       <Records />
+      <EnvironmentSetupFiles />
     </RemoteBuildEnvironment>
     <ParallelJobCount>1</ParallelJobCount>
     <SuppressDirectoryChangeMessages>true</SuppressDirectoryChangeMessages>
@@ -74,7 +75,18 @@
         <BackgroundMode>false</BackgroundMode>
       </CustomActionBase>
     </PreBuildActions>
-    <PostBuildActions />
+    <PostBuildActions>
+      <CustomActionBase xsi:type="CommandLineAction">
+        <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
+        <RemoteHost>
+          <HostName>BuildMachine</HostName>
+          <Transport>BuiltinShortcut</Transport>
+        </RemoteHost>
+        <Command>$(BuildDir)\scripts\transfer.cmd</Command>
+        <WorkingDirectory>$(BuildDir)</WorkingDirectory>
+        <BackgroundMode>true</BackgroundMode>
+      </CustomActionBase>
+    </PostBuildActions>
     <PreCleanActions />
     <PostCleanActions />
   </CustomBuild>

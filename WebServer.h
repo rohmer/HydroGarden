@@ -4,6 +4,7 @@
    Example of how to use the Description mechanism
 */
 
+#include <chrono>
 #include <pistache/http.h>
 #include <pistache/description.h>
 #include <pistache/endpoint.h>
@@ -28,10 +29,13 @@ using namespace std;
 class WebServer {
 public:
 	WebServer(Address addr);
-
+	~WebServer();
+	
 	void start();
 
 private:
+	std::string toDuration(time_t time);
+	
 	void getLogs(const Rest::Request &request, Http::ResponseWriter response);
 	void clearLogs(const Rest::Request &request, Http::ResponseWriter response);
 	void getStates(const Rest::Request &request, Http::ResponseWriter response);
@@ -44,8 +48,8 @@ private:
 	
 	void createSettings();
 	
-	std::map<std::string, Setting> getSettings(std::map<std::string, Setting> settings);
-	std::map<std::string, bool> setSettings(std::map<std::string, Setting> settings);
+	std::map<std::string, SettingGroup> getSettings(std::map<std::string, SettingGroup> settings);
+	std::map<std::string, bool> setSettings(std::map<std::string, SettingGroup> settings);
 	
 	std::thread wsThread;
 	Pistache::Rest::Router *router;

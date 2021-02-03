@@ -342,3 +342,12 @@ healthchecksdb
 .visualgdb/
 *.00?
 *.tar.gz
+.visualgdb/CodeDB/HydroGarden-Debug-VisualGDB/GlobalFileTable.000
+.visualgdb/CodeDB/HydroGarden-Debug-VisualGDB/GlobalFileTable.000
+.visualgdb/CodeDB/HydroGarden-Debug-VisualGDB/GlobalFileTable.001
+*.lck
+*.000
+*.001
+*.npa00
+*.001
+*.000

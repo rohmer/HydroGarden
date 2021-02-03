@@ -15,14 +15,21 @@ WebServer::WebServer(Address addr) :
 		Version().ToJSON(),
 		router,
 		std::bind(&WebServer::getSettings, this, placeholders::_1),
-		std::bind(&WebServer::setSettings, this, placeholders::_1)
+		std::bind(&WebServer::setSettings, this, placeholders::_1),
+		std::filesystem::path("Hydro.png")
 	);
 	createSettings();
 	createRoutes();
+	discovery->InitNetworkDiscovery();
 	httpEndpoint->setHandler(router->handler());
 	wsThread = std::thread(&WebServer::start, this);
 }
 
+WebServer::~WebServer()
+{
+	httpEndpoint->shutdown();
+}
+	
 void WebServer::start()
 {
 	{		
@@ -42,6 +49,79 @@ void WebServer::createRoutes()
 
 void WebServer::createSettings()
 {
+	discovery->AddSettingGroup("Status", ImgJSON::ImageFromFile("status.png"));
+	discovery->AddSetting(
+		Setting(
+			"Light",
+			"Light Status",
+			Setting::eBOOL,
+			false,
+			false
+			),
+			"Status"
+		);
+	discovery->AddSetting(
+		Setting(
+			"Water",
+			"The water level",
+			Setting::UNKNOWN),
+		"Status");
+	discovery->AddSetting(
+		Setting(
+			"Feed Level",
+		"The level of plant food",
+		Setting::UNKNOWN),
+		"Status");
+	discovery->AddSetting(
+		Setting(
+			"Pump",
+		"Pump Status",
+		Setting::eBOOL,
+		false,
+			false),
+		"Status"
+	);
+	discovery->AddSetting(
+		Setting(
+			"Light Duration",
+			"Time until light toggles",
+		Setting::eSTR,
+		"",
+		true),
+		"Status");
+	discovery->AddSetting(
+		Setting(
+			"Pump Duration",
+		"Time until pump toggles",
+		Setting::eSTR,
+		"",
+			true),
+		"Status");
+	discovery->AddSetting(
+		Setting(
+			"Feeding",
+		"Time to next feeding",
+		Setting::eSTR,
+		"",
+		true));
+	discovery->AddSettingGroup("Logs", ImgJSON::ImageFromFile("log.png"));
+	discovery->AddSetting(
+		Setting(
+			"Logs",
+			"Application Logs",
+			Setting::eSTRINGLIST),
+		"Logs");
+	discovery->AddSetting(
+		Setting(
+			"Clear",
+			"Clear Application Logs",
+		Setting::eBOOL,
+		false,
+		false
+		),
+		"Logs"
+	);
+	discovery->AddSettingGroup("General", ImgJSON::ImageFromFile("settings.png"));
 	discovery->AddSetting(
 		Setting(
 			"lightStartHour",
@@ -51,17 +131,19 @@ void WebServer::createSettings()
 			23,
 			Settings::GetInstance()->LightStartHour(),
 			false
-		)
+		),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
-			"lightStartMin",
+		"lightStartMin",
 		"Starting minute for the grow light",
 		Setting::eINT,
 		0,
 		59,
 		Settings::GetInstance()->LightStartMin(),
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -71,7 +153,8 @@ void WebServer::createSettings()
 		0,
 		1440,
 		Settings::GetInstance()->LightDuration(),
-		false)
+			false),
+		"General"
 );
 	discovery->AddSetting(
 		Setting(
@@ -81,7 +164,8 @@ void WebServer::createSettings()
 		0,
 		59,
 		Settings::GetInstance()->PumpRunTime(),
-		false)
+			false),
+		"General"
 );
 	discovery->AddSetting(
 		Setting(
@@ -91,7 +175,8 @@ void WebServer::createSettings()
 		0.0,
 		200.0,
 		Settings::GetInstance()->DailyMLFood(),
-		false)
+			false),
+		"General"
 );
 	discovery->AddSetting(
 		Setting(	
@@ -99,8 +184,8 @@ void WebServer::createSettings()
 			"SSID of a wireless network",
 			Setting::eSTR,
 			"",
-			false		
-		)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 	Setting(	
@@ -108,7 +193,8 @@ void WebServer::createSettings()
 		"SSID of a wireless network",
 		Setting::eSTR,
 		"",
-		false)
+			false),
+		"General"
 );
 	discovery->AddSetting(
 	Setting(	
@@ -116,7 +202,8 @@ void WebServer::createSettings()
 		"SSID of a wireless network",
 		Setting::eSTR,
 		"",
-		false)
+			false),
+		"General"
 );
 	discovery->AddSetting(
 	Setting(	
@@ -124,7 +211,8 @@ void WebServer::createSettings()
 		"SSID of a wireless network",
 		Setting::eSTR,
 		"",
-		false)
+			false),
+		"General"
 );
 	discovery->AddSetting(
 	Setting(	
@@ -132,7 +220,8 @@ void WebServer::createSettings()
 		"SSID of a wireless network",
 		Setting::eSTR,
 		"",
-		false)
+			false),
+		"General"
 );
 	discovery->AddSetting(
 		Setting(
@@ -140,8 +229,8 @@ void WebServer::createSettings()
 			"Password of wireless network",
 		Setting::eSTR,
 		"",
-		false
-		)
+		false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -149,7 +238,8 @@ void WebServer::createSettings()
 		"Password of wireless network",
 		Setting::eSTR,
 		"",
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -157,7 +247,8 @@ void WebServer::createSettings()
 		"Password of wireless network",
 		Setting::eSTR,
 		"",
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -165,7 +256,8 @@ void WebServer::createSettings()
 		"Password of wireless network",
 		Setting::eSTR,
 		"",
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -173,7 +265,8 @@ void WebServer::createSettings()
 		"Password of wireless network",
 		Setting::eSTR,
 		"",
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -181,7 +274,8 @@ void WebServer::createSettings()
 		"Is network default",
 		Setting::eBOOL,
 		false,
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -189,7 +283,8 @@ void WebServer::createSettings()
 		"Is network default",
 		Setting::eBOOL,
 		false,
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -197,7 +292,8 @@ void WebServer::createSettings()
 		"Is network default",
 		Setting::eBOOL,
 		false,
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -205,7 +301,8 @@ void WebServer::createSettings()
 		"Is network default",
 		Setting::eBOOL,
 		false,
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -213,7 +310,8 @@ void WebServer::createSettings()
 		"Is network default",
 		Setting::eBOOL,
 		false,
-		false)
+			false),
+		"General"
 	);
 	discovery->AddSetting(
 		Setting(
@@ -221,9 +319,11 @@ void WebServer::createSettings()
 			"HydroGarden device hostname",
 			Setting::eSTR,
 			"",
-			false
-		)
+			false),
+		"General"
 	);
+	
+	
 }
 
 void WebServer::getStates(const Rest::Request &req, Http::ResponseWriter response)
@@ -347,26 +447,81 @@ void WebServer::update(const Rest::Request &req, Http::ResponseWriter response)
 	}
 }
 
-std::map<std::string, bool> WebServer::setSettings(std::map<std::string, Setting> settings)
+std::map<std::string, bool> WebServer::setSettings(std::map<std::string, SettingGroup> settings)
 {
 	std::vector<sNetwork> networks;
 	for (int i = 0; i < 5; i++)
 		networks.push_back(sNetwork());
 	
-	for (std::map<std::string, Setting>::iterator it = settings.begin(); it != settings.end(); it++)
+	std::map<std::string, bool> ret;
+	for (std::map<std::string, SettingGroup>::iterator it = settings.begin(); it != settings.end(); it++)
+		for (std::map<std::string, Setting>::iterator i2 = it->second.GetSettings().begin();
+			i2 != it->second.GetSettings().end();
+			i2++)
+			ret.emplace(i2->second.SettingName(), false);
+	
+	if (settings.find("Logs") != settings.end())
 	{
-		if (it->first == "lightStartHour")
-			Settings::GetInstance()->SetLightStartHour(it->second.GetIntVal());
-		if (it->first == "lightStartMin")
-			Settings::GetInstance()->SetLightStartMinute(it->second.GetIntVal());
-		if (it->first == "lightDuration")
-			Settings::GetInstance()->SetLightDuration(it->second.GetIntVal());
-		if (it->first == "pumpDuration")
-			Settings::GetInstance()->SetPumpRunTime(it->second.GetIntVal());
-		if (it->first == "hostname")
-			Settings::GetInstance()->SetHostname(it->second.GetStrVal());
-		if (it->first == "dailyMLFood")
-			Settings::GetInstance()->SetDailyMLFood(it->second.GetFloatVal());
+		std::map<std::string,Setting> set = settings["Logs"].GetSettings();
+		if(set.find("Logs")!=set.end())
+		{		
+			if (set["Logs"].GetBoolVal())
+				{
+					Logger::GetInstance()->ClearLog();
+					ret.emplace("Clear", true);
+				}
+			}
+	}
+	if (settings.find("Status") != settings.end()) 
+	{
+		std::map<std::string, Setting> status = settings["Status"].GetSettings();
+		
+
+		if (status.find("Light") != status.end())
+		{
+			if (Hardware::LightStatus())
+				Hardware::LightsOff();
+			else
+				Hardware::LightsOn();
+		}
+		if (status.find("Pump")!=status.end())
+		{
+			if (Hardware::PumpStatus())
+				Hardware::PumpsOff();
+			else
+				Hardware::PumpsOn();
+		}
+	}
+	
+	
+	if (settings.find("General") != settings.end())
+	{
+		SettingGroup sg = settings["General"];
+		if (sg.HasSetting("lightStartHour"))
+		{
+			Settings::GetInstance()->SetLightStartHour(sg.GetSetting("lightStartHour").GetIntVal());
+		}
+		if (sg.HasSetting("lightStartMin"))
+		{
+			Settings::GetInstance()->SetLightStartMinute(sg.GetSetting("lightStartMinute").GetIntVal());
+		}
+		if (sg.HasSetting("lightDuration"))
+		{
+			Settings::GetInstance()->SetLightDuration(sg.GetSetting("lightDuration").GetIntVal());
+		}
+		if (sg.HasSetting("pumpDuration"))
+		{
+			Settings::GetInstance()->SetPumpRunTime(sg.GetSetting("pumpDuration").GetIntVal());
+		}
+		if (sg.HasSetting("hostname"))
+		{
+			Settings::GetInstance()->SetHostname(sg.GetSetting("hostname").GetStrVal());
+		}
+		if (sg.HasSetting("dailyMLFood"))
+		{
+			Settings::GetInstance()->SetDailyMLFood(sg.GetSetting("dailyMLFood").GetIntVal());
+		}
+		
 		for (int i = 1; i <= 5; i++)
 		{
 			std::stringstream s1, s2, s3;
@@ -374,17 +529,20 @@ std::map<std::string, bool> WebServer::setSettings(std::map<std::string, Setting
 			s2 << "networkPassword" << i;
 			s3 << "networkDefault" << i;
 			
-			if (it->first == s1.str())
+			if (sg.HasSetting(s1.str()))
 			{
-				networks[i].ssid = it->second.GetStrVal();
+				networks[i].ssid = sg.GetSetting(s1.str()).GetStrVal();
+				ret.emplace(s1.str(), true);
 			} 
-			if (it->first == s2.str())
+			if (sg.HasSetting(s2.str()))
 			{
-				networks[i].password = it->second.GetStrVal(); 
+				networks[i].password = sg.GetSetting(s2.str()).GetStrVal();
+				ret.emplace(s2.str(), true);
 			}
-			if (it->first == s3.str())
+			if (sg.HasSetting(s3.str()))
 			{
-				networks[i].isDefault = it->second.GetBoolVal();
+				networks[i].isDefault = sg.GetSetting(s3.str()).GetBoolVal();
+				ret.emplace(s3.str(), true);
 			}
 		}
 		
@@ -397,51 +555,159 @@ std::map<std::string, bool> WebServer::setSettings(std::map<std::string, Setting
 			}
 				
 		}
+		
 	}
+	
+	return ret;
 }
 	
-std::map<std::string, Setting> WebServer::getSettings(std::map<std::string, Setting> settings)
+std::map<std::string, SettingGroup> WebServer::getSettings(std::map<std::string, SettingGroup> settings)
 {
-	settings["lightStartHour"].SetValue(Settings::GetInstance()->LightStartHour());
-	settings["lightStartMin"].SetValue(Settings::GetInstance()->LightStartMin());
-	settings["lightDuration"].SetValue(Settings::GetInstance()->LightDuration());
-	settings["pumpDuration"].SetValue(Settings::GetInstance()->PumpRunTime());
-	settings["dailyMLFood"].SetValue(Settings::GetInstance()->DailyMLFood());
-	settings["hostname"].SetValue(Settings::GetInstance()->GetHostname());
-	std::vector<sNetwork> networks = Settings::GetInstance()->GetNetworks();
-	for (int i = networks.size(); i < 5; i++)
-	{
-		std::stringstream s1;
-		int ctr = i + 1;
-		s1 << "networkSSID" << ctr;
-		settings[s1.str()].SetValue("");
-		s1.str("");
-		s1 << "networkPassword" << ctr;
-		settings[s1.str()].SetValue("");
-		s1.str("");
-		s1 << "networkDefault" << ctr;
-		settings[s1.str()].SetValue(false);
-	}
+	std::vector<Setting> set, logs, status;
 	
-	for (int i = 0; i < networks.size(); i++)
+	if (settings.find("Logs") != settings.end())
 	{
-		if (i > 4)
-			break;
-		std::stringstream s1;
-		int ctr = i + 1;
-		s1 << "networkSSID" << ctr;
-		settings[s1.str()].SetValue(networks[i].ssid);
-		s1.str("");
-		s1 << "networkPassword" << ctr;
-#ifdef NETWORKPASS_CLEARTEXT
-		settings[s1.str()].SetValue(networks[i].password);
-#else
-		settings[s1.str()].SetValue("*");
-#endif
-		s1.str("");
-		s1 << "networkDefault" << ctr;
-		settings[s1.str()].SetValue(networks[i].isDefault);
-	}
+		std::deque<sLogMsg> logs = Logger::GetInstance()->GetLogMessages();
+		std::vector<std::string> logMsgs;
+		for (int i = logs.size()-1; i >= 0; i--)
+		{
+			std::stringstream ss;
+			sLogMsg logMsg = logs.at(i);
+			char mbstr[100];
+			std::strftime(mbstr, 100, "%d/%m/%Y %T", std::localtime(&logMsg.logTime));
+			ss << " " << mbstr;
+			switch (logMsg.level)
+			{
+			case eLogLevel::ERROR:
+				ss << " ERROR";
+				break;
+			case eLogLevel::WARN:
+				ss << " WARN";
+				break;
+			case eLogLevel::INFO:
+				ss << " INFO";
+				break;
+			}
+			
+			ss << " " << logMsg.msg;
+			logMsgs.push_back(ss.str());
+		}
+		
+		if (settings.find("Logs") != settings.end())
+		{
+			SettingGroup sg = settings["Logs"];
+			if (sg.HasSetting("Logs"))
+			{
+				sg.GetSetting("Logs").SetValue(logMsgs);
+			}
+			settings["Logs"] = sg;
+		}
 	
+		
+		if (settings.find("General") != settings.end())
+		{
+			SettingGroup sg = settings["General"];
+			if (sg.HasSetting("lightStartHour"))
+				sg.SetSettingValue("lightStartHour", (int)Settings::GetInstance()->LightStartHour());
+			if (sg.HasSetting("lightStartMin"))
+				sg.SetSettingValue("lightStartMin", (int)Settings::GetInstance()->LightStartMin());
+			
+			if (sg.HasSetting("lightDuration"))
+				sg.SetSettingValue("lightDuration", (int)Settings::GetInstance()->LightDuration());
+			if (sg.HasSetting("pumpDuration"))
+				sg.SetSettingValue("pumpDuration", (int)Settings::GetInstance()->PumpRunTime());
+			if (sg.HasSetting("dailyMLFood"))
+				sg.SetSettingValue("dailyMLFood", Settings::GetInstance()->DailyMLFood());
+			if (sg.HasSetting("hostname"))
+				sg.SetSettingValue("hostname", Settings::GetInstance()->GetHostname());
+
+			std::vector<sNetwork> networks = Settings::GetInstance()->GetNetworks();
+			int topVal = 5;
+			if (networks.size() < topVal)
+				topVal = networks.size();
+			
+			for (int i = 1; i <= topVal; i++)
+			{
+				std::stringstream s1;
+				s1 << "networkSSID" << i;
+				sg.SetSettingValue(s1.str(), networks[i].ssid);
+				std::stringstream s2;
+				s2 << "networkPassword" << i;
+				#ifdef NETWORKPASS_CLEARTEXT
+				sg.SetSettingValue(s2.str(), networks[i].password);
+				#else
+				sg.SetSettingValue(s2.str(), "***");
+				#endif
+				std::stringstream s3;
+				s3 << "networkDefault" << i;
+				sg.SetSettingValue(s3.str(), networks[i].isDefault);					
+			}
+			settings["General"] = sg;
+		}
+		
+		if (settings.find("Status") != settings.end())
+		{
+			
+			SettingGroup status = settings["Status"];
+			if (status.HasSetting("Pump"))
+				status.SetSettingValue("Pump", Hardware::PumpStatus());
+			if (status.HasSetting("Light"))
+			{
+				status.SetSettingValue("Light", Hardware::LightStatus());
+			}
+			if (status.HasSetting("Light Duration"))
+			{
+				time_t t;
+				if (Hardware::LightStatus())
+					t = Scheduler::GetInstance()->GetNextLightOff();
+				else
+					t = Scheduler::GetInstance()->GetNextLightOff();
+				status.SetSettingValue("Light Duration", toDuration(t - time(nullptr)));
+			}
+			if (status.HasSetting("Pump Duration"))
+			{
+				time_t t;
+				if (Hardware::PumpStatus())
+					t = Scheduler::GetInstance()->GetNextPumpOff();
+				else
+					t = Scheduler::GetInstance()->GetNextPumpOn();
+				status.SetSettingValue("Pump Duration", toDuration(t - time(nullptr)));
+			}
+			if (status.HasSetting("Feeding"))
+			{
+				status.SetSettingValue("Feeding", toDuration(Scheduler::GetInstance()->GetNextFeeding() - time(nullptr)));
+			}
+			if (status.HasSetting("Water"))
+			{
+				if (Hardware::WaterLevel())
+					status.SetSettingValue("Water", Setting::GREEN);
+				else
+					status.SetSettingValue("Water", Setting::RED);
+			}
+			if (status.HasSetting("Feed"))
+			{
+				if(Hardware::FeedLevel())
+					status.SetSettingValue("Feed", Setting::GREEN);
+				else
+					status.SetSettingValue("Feed", Setting::RED);
+			}
+			settings["Status"] = status;
+			
+		}
+		
+	}
 	return settings;
+}
+
+std::string WebServer::toDuration(time_t time)
+{
+	int remain=time, hour, min, sec;
+	hour = time / (60 * 60);
+	remain -= hour*60*60;
+	min = remain / 60;
+	sec = remain - min*60;
+	std::stringstream ss;
+	ss << printf("%02d", hour) << ":" << printf("%02d", min) << ":" << printf("%02d", sec);
+	return ss.str();
+	
 }

@@ -2,46 +2,55 @@
 
 Discovery::Discovery(
 		int discoveryPort,
-		int applicationID,
-		bool canBeDiscovered,
-		bool canDiscover,
-		std::string appName,
-		nlohmann::json appVersion,
-		Pistache::Rest::Router *eprouter,
-		std::function<std::map<std::string, Setting>(std::map<std::string,Setting>)> settingGetFunction,
-		std::function<std::map<std::string, bool>(std::map<std::string,Setting>)> settingSetFunction
-	) :
-	appName(appName),
-	appVersion(appVersion),
-	router(eprouter),
-	settingGetter(settingGetFunction),
-	settingSetter(settingSetFunction)
+	int applicationID,
+	bool canBeDiscovered,
+	bool canDiscover,
+	std::string appName,
+	nlohmann::json appVersion,
+	Pistache::Rest::Router *eprouter,
+	std::function<std::map<std::string,
+	SettingGroup>(std::map<std::string, SettingGroup>)> settingGetFunction,
+	std::function<std::map<std::string,
+	bool>(std::map<std::string, SettingGroup>)> settingSetFunction,
+	std::filesystem::path applicationIcon,
+	std::string defaultSettingGroupName)
+	: appName(appName)
+	, appVersion(appVersion)
+	, router(eprouter)
+	, settingGetter(settingGetFunction)
+	, settingSetter(settingSetFunction)
+	, defaultGroup(defaultSettingGroupName)
 {
+	settingGroups.emplace(defaultGroup, SettingGroup(defaultGroup));
 	AddEndpoint(Endpoint("/discovery", Endpoint::GET), 
-		std::bind(&Discovery::discovery, this,placeholders::_1, placeholders::_2)
-	);		
-	if(settingGetter!=nullptr)
+		std::bind(&Discovery::discovery, this, placeholders::_1, placeholders::_2));		
+	if (settingGetter != nullptr)
 		AddEndpoint(Endpoint("/settings", Endpoint::GET),
-		std::bind(&Discovery::getSettings, this, placeholders::_1, placeholders::_2)
-	);
+			std::bind(&Discovery::getSettings, this, placeholders::_1, placeholders::_2));
 	if (settingSetter != nullptr)
 		AddEndpoint(Endpoint("/settings", Endpoint::POST), 
-		std::bind(&Discovery::setSettings, this, placeholders::_1, placeholders::_2)
-	);
-	if (canBeDiscovered || canDiscover)
+			std::bind(&Discovery::setSettings, this, placeholders::_1, placeholders::_2));
+	if (applicationIcon != "")
+	{
+		appIcon = ImgJSON::JsonFromFile(applicationIcon);
+	}
+	if (canBeDiscovered || canDiscover) 
 	{
 		initDiscovery(discoveryPort, applicationID, canBeDiscovered, canDiscover);
 	}
 }
 
+void Discovery::InitNetworkDiscovery()
+{
+	peer.Start(parameters, toJSON().dump());
+}
+
 void Discovery::initDiscovery(int port, int appId, bool canBeDiscovered, bool canDiscover)
 {
-	udpdiscovery::PeerParameters parameters;
 	parameters.set_port(port);
 	parameters.set_application_id(appId);
 	parameters.set_can_be_discovered(canBeDiscovered);
 	parameters.set_can_discover(canDiscover);
-	peer.Start(parameters, toJSON().dump());
 }
 
 nlohmann::json Discovery::DiscoverPeers()
@@ -64,9 +73,9 @@ nlohmann::json Discovery::DiscoverPeers()
 	
 Pistache::Rest::Route::Result Discovery::getSettings(const Pistache::Rest::Request &request, Pistache::Http::ResponseWriter response)
 {
-	std::map<std::string, Setting> settingValues = settingGetter(settings);
+	std::map<std::string, SettingGroup> settingValues = settingGetter(settingGroups);
 	nlohmann::json json;
-	for (std::map<std::string, Setting>::iterator it = settingValues.begin();
+	for (std::map<std::string, SettingGroup>::iterator it = settingValues.begin();
 		it != settingValues.end();
 		it++)
 	{
@@ -92,14 +101,14 @@ Pistache::Rest::Route::Result Discovery::setSettings(const Pistache::Rest::Reque
 	if (!json.contains("settings"))
 		return Pistache::Rest::Route::Result::Failure;
 	nlohmann::json set = json["settings"];
-	std::map<std::string, Setting> lSettings;
+	std::map<std::string, SettingGroup> jsetGroup;
 	for (auto &setting : set)
 	{	
 		try
 		{
-			Setting pset = Setting::FromJSON(setting);
-			if(pset.SettingName()!="")
-				lSettings.emplace(pset.SettingName(), pset);
+			SettingGroup pset = SettingGroup::FromJSON(setting);
+			if(pset.GetName()!="")
+				jsetGroup.emplace(pset.GetName(), pset);
 		}
 		catch (const std::exception&)
 		{
@@ -110,61 +119,83 @@ Pistache::Rest::Route::Result Discovery::setSettings(const Pistache::Rest::Reque
 	
 	struct sSetResult
 	{
-		sSetResult(std::string name, std::string result, bool valSet)
-			: settingName(name)
+		sSetResult(std::string groupName, std::string name, std::string result, bool valSet)
+			: settingGroup(groupName)
+			, settingName(name)
 			, disposition(result)
 			, valueSet(valSet)
 		{
 		}
-		std::string settingName;
+		std::string settingGroup, settingName;
 		std::string disposition;
 		bool valueSet;
 	};
 	std::vector<sSetResult> results;
-	std::map<std::string, Setting> settingsToSet;
+	std::map<std::string, SettingGroup> toSet;
 	
-	for (std::map<std::string, Setting>::iterator it = lSettings.begin(); it != lSettings.end(); it++)
+	for (std::map<std::string, SettingGroup>::iterator it = jsetGroup.begin();
+		it != jsetGroup.end(); it++)
 	{
-		Setting s = it->second;
-		std::string name = it->first;
-		if (s.IsReadOnly())
+		if (settingGroups.find(it->first) != settingGroups.end())
 		{
-			results.push_back(sSetResult(s.SettingName(), "Read Only", false));
-		}
-		else
-		{
-			if (s.IsValidValue())
+			// This is a valid and defined setting group
+			SettingGroup localSettingGroup = settingGroups[it->first];
+			SettingGroup  jsonSettingGroup = it->second;
+			
+			// Now check all the settings in the json against our local settings
+			std::map<std::string, Setting> jsonSettings = jsonSettingGroup.GetSettings();
+			
+			for (std::map<std::string, Setting>::iterator jit=jsonSettings.begin(); jit!=jsonSettings.end(); jit++)
 			{
-				bool validType = false;
-				for (std::map<std::string,Setting>::iterator iter=settings.begin(); iter!=settings.end(); iter++)
+				Setting s;
+				if (localSettingGroup.GetSetting(jit->second))
 				{
-					if (iter->first == name)
+					// It is a valid setting, check for min/max
+					bool valid = true;
+					if (s.SettingType() == Setting::eINT)
 					{
-						if (s.SettingType() == iter->second.SettingType())
-							validType = true;
-						break;
+						if (jit->second.GetIntVal() > s.IntMax() || jit->second.GetIntVal() < s.IntMin())
+							valid = false;
 					}
-				}
-				if (validType)
-				{
-					settingsToSet.emplace(s.SettingName(), s);
-					results.push_back(sSetResult(s.SettingName(), "Value set", true));
-				}
-				else
-				{
-					results.push_back(sSetResult(s.SettingName(), "Type Mismatch", false));
+					if (s.SettingType() == Setting::eFLOAT)
+					{
+						if (jit->second.GetFloatVal() > s.FloatMin() || jit->second.GetFloatVal() < s.FloatMin())
+							valid = false;
+					}
+					if (s.SettingType() == Setting::ePICKLIST)
+					{
+						if (jit->second.GetIntVal() < 0 || jit->second.GetIntVal() >= s.SettingListItems().size())
+							valid = false;
+					}
+					if (valid == false)
+					{
+						results.push_back(
+							sSetResult(it->first, s.SettingName(), "Outside Min/Max Value", false)
+						);
+					}
+					else
+					{
+						if (toSet.find(it->first) == toSet.end())
+						{
+							toSet.emplace(
+								it->first,
+								SettingGroup(it->first)
+							);	
+						}
+						toSet[it->first].AddSetting(s);
+					}
+					
 				}
 			}
-			else
-			{
-				std::stringstream ss;
-				ss << "Value: " << s.GetStrVal() << " outside minimum/maximun values";
-				results.push_back(sSetResult(s.SettingName(), ss.str(), false));
-			}			
 		}
 	}
-	
-	settingSetter(settingsToSet);
+	std::map<std::string, bool> r = settingSetter(toSet);
+	for (std::map<std::string, bool>::iterator it = r.begin(); it != r.end(); it++)
+	{
+		results.push_back(
+			sSetResult("", it->first, "", it->second));
+	}
+		
 	std::stringstream rJson;
 	rJson << "{\"results\": [";
 	for(std::vector<sSetResult>::iterator it = results.begin() ; it != results.end() ; it++)
@@ -203,19 +234,18 @@ nlohmann::json Discovery::toJSON()
 {
 	nlohmann::json json;
 	json["app"]["name"] = appName;
-	std::string foo = appVersion.dump();
 	json["app"] = appVersion;
+	json["app"]["icon"] = appIcon;
 	json["endpoints"] = nlohmann::json::array();
 	json["settings"] = nlohmann::json::array();
 	int epSize = endpoints.size();
 	
 	for (int i = 0; i < endpoints.size(); i++)
 		json["endpoints"].push_back(endpoints[i].ToJSON());
-	for (std::map<std::string, Setting>::iterator it = settings.begin();
-		it != settings.end();
-		it++)
+	for (std::map<std::string, SettingGroup>::iterator it = settingGroups.begin(); it != settingGroups.end(); it++)
 	{
 		json["settings"].push_back(it->second.ToJSON());
 	}
+		
 	return json;
 }

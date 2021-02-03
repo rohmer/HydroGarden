@@ -15,9 +15,26 @@ public:
 		eINT,
 		eBOOL,
 		eFLOAT, 
-		eLIST
+		ePICKLIST,
+		eSTRINGLIST,
+		eSTATUS
 	};
+	
+	enum eStatusType
+	{
+		RED,
+		YELLOW, 
+		GREEN,
+		UNKNOWN
+	};
+		
 	Setting() {}
+	
+	Setting(std::string name, std::string description, eSettingType settingType);
+	
+	Setting(std::string name,
+		std::string description,
+		eStatusType status);
 	
 	Setting(
 		std::string name,
@@ -91,6 +108,25 @@ public:
 		return settingName;
 	}
 		
+	void SetValue(eStatusType status)
+	{
+		switch (status)
+		{
+		case Setting::RED:
+			settingValue = "RED";
+			break;
+		case Setting::YELLOW:
+			settingValue = "YELLOW";
+			break;
+		case Setting::GREEN:
+			settingValue = "GREEN";
+			break;
+		case Setting::UNKNOWN:
+			settingValue = "UNKNOWN";
+			break;
+		}
+	}
+	
 	void SetValue(std::string val) 
 	{
 		settingValue = val;
@@ -121,6 +157,11 @@ public:
 		settingValue = ss.str();
 	}
 	
+	void SetValue(std::vector<std::string> val)
+	{
+		settingListItems = val;
+	}
+		
 	std::vector<std::string> GetListItems()
 	{
 		return settingListItems;
@@ -135,6 +176,8 @@ public:
 	float GetFloatVal();
 	std::string GetStrVal();
 	std::string GetListVal();
+	std::vector<std::string> GetStringList();
+	eStatusType GetStatusVal();
 	
 	bool IsValidValue();
 	

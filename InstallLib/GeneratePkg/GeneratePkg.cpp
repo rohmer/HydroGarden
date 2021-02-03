@@ -21,13 +21,13 @@ int exec(int argc, char *argv[])
 		exit(0);
 	}
 	
-	if (!result.count("desc"))
+	std::string desc="package.json";
+	if (result.count("desc"))
 	{
-		std:cerr << "-d|--desc required" << std::endl;
-		return -1;
+		desc = result["desc"].as<std::string>();
 	}
 	
-	sPackageStatus stat = Package::CreatePackage(result["desc"].as<std::string>());
+	sPackageStatus stat = Package::CreatePackage(desc);
 	for (int i = 0; i < stat.msgs.size(); i++)
 	{
 		if (stat.msgs[i].success)

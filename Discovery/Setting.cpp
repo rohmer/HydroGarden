@@ -1,7 +1,17 @@
 #include "Setting.h"
 
 Setting::Setting(
-		std::string name,
+	std::string name,
+	std::string description,
+	eSettingType settingType)
+	: settingName(name)
+	, settingDescription(description)
+	, settingType(settingType)
+{
+}
+		
+Setting::Setting(
+	std::string name,
 	std::string description,
 	eSettingType settingType,
 	std::string settingValue,
@@ -89,6 +99,32 @@ Setting::Setting(
 	this->settingValue = ss.str();
 }
 
+Setting::Setting(
+	std::string name,
+	std::string description,
+	eStatusType  status) :
+	settingName(name)
+	,settingDescription(description)
+	,settingType(eSettingType::eSTATUS)
+	,readOnly(true)
+{
+	switch (status)
+	{
+	case eStatusType::GREEN:
+			settingValue = "GREEN";
+		break;
+	case eStatusType::YELLOW:
+		settingValue = "YELLOW";
+		break;
+	case eStatusType::RED:
+		settingValue = "RED";
+		break;
+	case eStatusType::UNKNOWN:
+		settingValue = "UNKNOWN";
+		break;
+	}
+}
+	
 nlohmann::json Setting::ToJSON()
 {
 	nlohmann::json json;
@@ -110,13 +146,20 @@ nlohmann::json Setting::ToJSON()
 	case Setting::eBOOL:
 		st = "BOOL";
 		break;
-	case Setting::eLIST:
+	case Setting::ePICKLIST:
 		st = "LIST";
 		break;
+	case Setting::eSTRINGLIST:
+		st = "STRINGLIST";
+		break;
+	case Setting::eSTATUS:
+		st = "STATUS";
+		break;
+	
 	}
 	json["setting"]["type"] = st;
 	json["setting"]["readOnly"] = readOnly;
-	if (settingType == Setting::eLIST)
+	if (settingType == Setting::ePICKLIST)
 	{
 		for (int i = 0; i < settingListItems.size(); i++)
 		{
@@ -173,9 +216,14 @@ Setting Setting::FromJSON(std::string jsonStr)
 			if (json["setting"]["type"] == "FLOAT")
 				setting.settingType = eSettingType::eFLOAT;
 			if (json["setting"]["type"] == "LIST")
-				setting.settingType = eSettingType::eLIST;
+				setting.settingType = eSettingType::ePICKLIST;
+			if (json["setting"]["type"] == "STRINGLIST")
+				setting.settingType = eSettingType::eSTRINGLIST;
+			if (json["setting"]["type"] == "STATUS")
+				setting.settingType = eSettingType::eSTATUS;
 		}
-		if (setting.settingType == eLIST)
+			
+		if (setting.settingType == ePICKLIST)
 		{
 			if (json["setting"]["listItems"].is_array())
 			{
@@ -245,12 +293,28 @@ float Setting::GetFloatVal()
 	}
 }
 	
+Setting::eStatusType Setting::GetStatusVal()
+{
+	if (settingValue == "RED")
+		return eStatusType::RED;
+	if (settingValue == "YELLOW")
+		return eStatusType::YELLOW;
+	if (settingValue == "GREEN")
+		return eStatusType::GREEN;
+	return eStatusType::UNKNOWN;
+}
+
 std::string Setting::GetListVal()
 {
 	int i = GetIntVal();
 	if (i<0 || i>settingListItems.size() - 1)
 		return "";
 	return settingListItems[i];
+}
+	
+std::vector<std::string> Setting::GetStringList()
+{
+	return settingListItems;
 }
 	
 bool Setting::IsValidValue()
@@ -282,7 +346,7 @@ bool Setting::IsValidValue()
 			return true;
 		}
 		break;
-	case Setting::eLIST:
+	case Setting::ePICKLIST:
 		{
 			std::string l = GetListVal();
 			if (l == "")
@@ -291,5 +355,20 @@ bool Setting::IsValidValue()
 			return true;
 		}
 		break;
+	case Setting::eSTRINGLIST:
+		return true;
+	case Setting::eSTATUS:
+		{
+			if (settingValue == "RED") 
+				return true;
+			if (settingValue == "YELLOW")
+				return true;
+			if (settingValue == "GREEN")
+				return true;
+			if (settingValue == "UNKNOWN")
+				return true;
+			return false;
+		}
 	}
+	return true;
 }
