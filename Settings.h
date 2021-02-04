@@ -1,6 +1,7 @@
 #pragma once
 
 #include <ctime>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -36,6 +37,7 @@ private:
 	uint lightStartHour, lightStartMin, lightDuration;
 	uint pumpRunTime;
 	float dailyMLFood;										// 15ml per tablespoon
+	bool headless;
 	
 	std::map<std::string, sNetwork> networks;
 	std::string hostname;
@@ -43,7 +45,9 @@ private:
 public:
 	static Settings *GetInstance();
 	
-	uint LightStartHour() { return lightStartHour;}
+	bool Headless() { return headless; }
+	bool Headless(bool val) { headless = val; }
+	uint LightStartHour() { return lightStartHour;}		
 	uint LightStartMin() { return lightStartMin;}
 	uint LightDuration() { return lightDuration;}
 	uint PumpRunTime() { return pumpRunTime; }

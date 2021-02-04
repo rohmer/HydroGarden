@@ -351,3 +351,6 @@ healthchecksdb
 *.npa00
 *.001
 *.000
+*.000
+*.npa00
+*.dat

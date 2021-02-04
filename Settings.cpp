@@ -16,6 +16,14 @@ Settings::Settings()
 		char cHost[1024];
 		gethostname(cHost, 1024);	
 		hostname = cHost;
+		if (std::filesystem::exists("/dev/fb0")) 
+		{
+			headless = false;
+		} 
+		else 
+		{
+			headless = true;			
+		}
 		SaveSettings();
 	} 
 	LoadSettings();
@@ -101,6 +109,7 @@ bool Settings::SaveSettings()
 std::string Settings::ToJSON()
 {
 	nlohmann::json json;
+	json["settings"]["headless"] = headless;
 	json["settings"]["LightStartHour"] = lightStartHour;
 	json["settings"]["LightStartMin"] = lightStartMin;
 	json["settings"]["LightDuration"] = lightDuration;
@@ -187,6 +196,16 @@ bool Settings::LoadSettings()
 	catch (const std::exception&)
 	{
 		dailyMLFood = 4.5;
+	}
+	try
+	{
+		headless = json["settings"]["headless"];
+	}
+	catch (const std::exception&)
+	{
+		if (std::filesystem::exists("/dev/fb0"))
+			headless = false;
+		headless = true;
 	}
 	try
 	{
