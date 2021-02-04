@@ -6,6 +6,8 @@
 
 #include <json.hpp>
 
+#include "Setting.h"
+
 class Setting
 {
 public:
